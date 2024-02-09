@@ -1,0 +1,90 @@
+:root {
+  --flippy-blue: #047bd5;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: sans-serif;
+  padding: 0;
+}
+
+header {
+  height: 80px;
+  letter-spacing: 2px;
+  display: flex;
+  padding-inline: 20px;
+  margin-inline: auto;
+  width: 100%;
+  max-width: 960px;
+  color: var(--flippy-blue);
+  align-items: center;
+  justify-content: space-between;
+}
+header a {
+  font-size: 18px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  text-decoration: none;
+  color: var(--flippy-blue);
+}
+header #navbar-cart img:hover {
+  filter: invert(60%) sepia(72%) saturate(3355%) hue-rotate(157deg) brightness(89%) contrast(101%);
+}
+
+section {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 960px;
+}
+section h1 {
+  font-weight: 400;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+#navbar-cart {
+  position: relative;
+  cursor: pointer;
+}
+#navbar-cart #cart-count {
+  position: absolute;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  top: -15px;
+  right: -15px;
+  display: inline-block;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.cart-count {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.cart-count div {
+  width: 20%;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  border: none;
+  color: black;
+  display: inline-block;
+  text-align: center;
+  font-weight: bold;
+}
+.cart-count .btnAdd,
+.cart-count .btnSub {
+  cursor: pointer;
+  color: gray;
+  padding: 14px;
+  max-width: 50px;
+  border: 1px solid #888888;
+}/*# sourceMappingURL=helper.css.map */

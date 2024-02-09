@@ -1,14 +1,11 @@
-import { cart, data, addtoCart, removefromCart } from "./common/common.js";
+import { cart, data, addtoCart, removefromCart } from "./helper/helper.js";
 
 const flexContainer = document.getElementById("flex-container");
 const navbarCart = document.getElementById("navbar-cart");
 
 // localStorage.setItem("myCat", "Tom");
-const findinCart = (item) => {
-  return cart != []
-    ? cart.find((cartItem) => cartItem.name === item.name)
-    : null;
-};
+const findinCart = (item) =>
+  cart != [] ? cart.find((cartItem) => cartItem.name === item.name) : null;
 
 data.forEach((item, ind) => {
   // create item
@@ -57,6 +54,13 @@ data.forEach((item, ind) => {
     button.style.display = "none";
   }
 
+  // // add content to item
+  cartCountDiv.append(btnSub, count, btnAdd);
+  itemDiv.append(productImage, title, price, button, cartCountDiv);
+
+  // // add to flex-container
+  flexContainer.appendChild(itemDiv);
+
   //on event
   button.addEventListener("click", () => {
     addtoCart(item);
@@ -84,13 +88,6 @@ data.forEach((item, ind) => {
       button.style.display = "block";
     } else count.innerText = cartItemIndex >= 0 ? cart[cartItemIndex].count : 0;
   });
-
-  // // add content to item
-  cartCountDiv.append(btnAdd, count, btnSub);
-  itemDiv.append(productImage, title, price, button, cartCountDiv);
-
-  // // add to flex-container
-  flexContainer.appendChild(itemDiv);
 });
 
 navbarCart.addEventListener("click", () => {

@@ -1,4 +1,9 @@
-import { cart, addtoCart, removefromCart } from "../common/common.js";
+import {
+  cart,
+  saveUpdate,
+  addtoCart,
+  removefromCart,
+} from "../helper/helper.js";
 
 const flexContainer = document.getElementById("flex-container");
 
@@ -91,7 +96,7 @@ cart.forEach((item) => {
   btnSub.classList.add("btnSub");
 
   //quantity
-  cartCountDiv.append(btnAdd, count, btnSub);
+  cartCountDiv.append(btnSub, count, btnAdd);
   const quantity = document.createElement("h3");
   quantity.append(cartCountDiv);
 
@@ -109,9 +114,10 @@ cart.forEach((item) => {
   crossButton.addEventListener("click", () => {
     cartItemIndex = cart.findIndex((cartItem) => cartItem === item);
     cart.splice(cartItemIndex, 1);
+    console.log(cart);
     flexContainer.removeChild(itemDiv);
-    price.innerText = item.price * item.count;
     updatePriceSection(cart, discount, shipping);
+    saveUpdate();
     hideInvoiceSection();
   });
 

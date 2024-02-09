@@ -1,5 +1,5 @@
 const dbData = localStorage.getItem("dbData");
-const cartData = localStorage.getItem("cart");
+const cartData = localStorage.getItem("cartData");
 export const data = dbData != "" && dbData != null ? JSON.parse(dbData) : [];
 export const cart =
   cartData != "" && cartData != null ? JSON.parse(cartData) : [];
@@ -7,8 +7,8 @@ export const cartCount = document.getElementById("cart-count");
 
 cartCount.innerText = cart.reduce((acc, curr) => acc + curr.count, 0);
 
-const saveUpdate = () => {
-  localStorage.setItem("cart", JSON.stringify(cart));
+export const saveUpdate = () => {
+  localStorage.setItem("cartData", JSON.stringify(cart));
   cartCount.innerText = cart.reduce((acc, curr) => acc + curr.count, 0);
 };
 
@@ -35,4 +35,19 @@ export const removefromCart = (item) => {
   }
 
   saveUpdate();
+};
+
+export const createItemDiv = (item) => {
+  // product image edit
+  const productImage = document.createElement("img");
+  productImage.src = item.imgUrl;
+
+  // title image edit
+  const title = document.createElement("h5");
+  title.innerText =
+    item.name.length > 50 ? item.name.slice(0, 50) + "..." : item.name;
+
+  const price = document.createElement("h2");
+  price.innerText = item.price;
+  return {};
 };
