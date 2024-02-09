@@ -1,50 +1,13 @@
+import { cart, data, addtoCart, removefromCart } from "./common/common.js";
+
 const flexContainer = document.getElementById("flex-container");
 const navbarCart = document.getElementById("navbar-cart");
-const cartCount = document.getElementById("cart-count");
-
-const dbData = localStorage.getItem("dbData");
-const cartData = localStorage.getItem("cart");
-
-const data = dbData != "" && dbData != null ? JSON.parse(dbData) : [];
-const cart = cartData != "" && cartData != null ? JSON.parse(cartData) : [];
-
-cartCount.innerText = cart.reduce((acc, curr) => acc + curr.count, 0);
 
 // localStorage.setItem("myCat", "Tom");
 const findinCart = (item) => {
   return cart != []
     ? cart.find((cartItem) => cartItem.name === item.name)
     : null;
-};
-
-const saveUpdate = () => {
-  localStorage.setItem("cart", JSON.stringify(cart));
-  cartCount.innerText = cart.reduce((acc, curr) => acc + curr.count, 0);
-};
-
-const addtoCart = (item) => {
-  var index = cart.findIndex((cartItem) => cartItem.name === item.name);
-  if (index >= 0) {
-    cart[index].count += 1;
-  } else {
-    cart.push({
-      ...item,
-      count: 1,
-    });
-  }
-
-  saveUpdate();
-};
-
-const removefromCart = (item) => {
-  var index = cart.findIndex((cartItem) => cartItem.name === item.name);
-  if (index >= 0 && cart[index].count > 1) {
-    cart[index].count -= 1;
-  } else {
-    cart.splice(index, 1);
-  }
-
-  saveUpdate();
 };
 
 data.forEach((item, ind) => {

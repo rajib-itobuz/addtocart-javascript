@@ -1,5 +1,5 @@
-const cartData = localStorage.getItem("cart");
-const cart = cartData != "" && cartData != null ? JSON.parse(cartData) : [];
+import { cart, addtoCart, removefromCart } from "../common/common.js";
+
 const flexContainer = document.getElementById("flex-container");
 
 const cartCount = document.getElementById("cart-count");
@@ -28,42 +28,13 @@ const hideInvoiceSection = () => {
     totalPriceSection.style.textAlign = "center";
   }
 };
-const addtoCart = (item) => {
-  var index = cart.findIndex((cartItem) => cartItem.name === item.name);
-  if (index >= 0) {
-    cart[index].count += 1;
-  } else {
-    cart.push({
-      ...item,
-      count: 1,
-    });
-  }
-
-  localStorage.setItem("cart", JSON.stringify(cart));
-  cartCount.innerText = cart.reduce((acc, curr) => acc + curr.count, 0);
-};
-
-const removefromCart = (item) => {
-  var index = cart.findIndex((cartItem) => cartItem.name === item.name);
-  if (index >= 0 && cart[index].count > 1) {
-    cart[index].count -= 1;
-  } else {
-    cart.splice(index, 1);
-  }
-
-  localStorage.setItem("cart", JSON.stringify(cart));
-  cartCount.innerText = cart.reduce((acc, curr) => acc + curr.count, 0);
-};
 
 const totalPriceSection = document.getElementById("total-price");
 
 const updatePriceSection = (cart, discount, charges) => {
-  const cartAmountTotal = cart.reduce(
-    (a, curr) => a + curr.count * curr.price,
-    0
-  );
-  const discountValue = cartAmountTotal * discount;
-  invValue.innerHTML = `<span>Cart Value :</span> <span>${cartAmountTotal.toFixed(
+  const cartAmount = cart.reduce((a, curr) => a + curr.count * curr.price, 0);
+  const discountValue = cartAmount * discount;
+  invValue.innerHTML = `<span>Cart Value :</span> <span>${cartAmount.toFixed(
     2
   )}</span>`;
   discvalue.innerHTML = `<span>Discount Applied ${
@@ -71,8 +42,8 @@ const updatePriceSection = (cart, discount, charges) => {
   }% :</span> <span>${discountValue.toFixed(2)}</span>`;
   shipCharge.innerHTML = `<span>Shipping Charges :</span> <span>${charges}</span>`;
   totalAmt.innerHTML = `<span>Total invoice Value :</span> <span>${(
-    cartAmountTotal -
-    discount +
+    cartAmount -
+    discountValue +
     charges
   ).toFixed(2)}</span>`;
 };
@@ -134,7 +105,7 @@ cart.forEach((item) => {
 
   //add to flex-container
   flexContainer.appendChild(itemDiv);
-
+  let cartItemIndex = 0;
   crossButton.addEventListener("click", () => {
     cartItemIndex = cart.findIndex((cartItem) => cartItem === item);
     cart.splice(cartItemIndex, 1);
