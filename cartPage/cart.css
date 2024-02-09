@@ -25,6 +25,7 @@ header {
 header a {
   font-size: 18px;
   display: flex;
+  cursor: pointer;
   align-items: center;
   text-decoration: none;
   color: var(--flippy-blue);
