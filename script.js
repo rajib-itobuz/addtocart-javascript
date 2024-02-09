@@ -96,34 +96,30 @@ data.forEach((item, ind) => {
 
   //on event
   button.addEventListener("click", () => {
-    // button.innerText="Go to Cart"
     addtoCart(item);
     cartCountDiv.style.display = "flex";
     button.style.display = "none";
-
-    count.innerText = item.index;
+    cartItemIndex = cart.findIndex((cartItem) => cartItem.name === item.name);
+    count.innerText =
+      cartItemIndex >= 0
+        ? cart.find((cartItem) => cartItem.name === item.name).count
+        : 0;
   });
 
   btnAdd.addEventListener("click", () => {
     addtoCart(item);
-
-    count.innerText = item.index;
+    cartItemIndex = cart.findIndex((cartItem) => cartItem.name === item.name);
+    count.innerText = cartItemIndex >= 0 ? cart[cartItemIndex].count : 0;
   });
 
   btnSub.addEventListener("click", () => {
-    // console.log(cart.find((cartItem) => cartItem.name === item.name).count);
     cartItemIndex = cart.findIndex((cartItem) => cartItem.name === item.name);
     const countItem = cart[cartItemIndex].count;
     removefromCart(item);
     if (countItem == 1) {
       cartCountDiv.style.display = "none";
       button.style.display = "block";
-    } else
-      count.innerText =
-        cartItemIndex >= 0
-          ? cart.find((cartItem) => cartItem.name === item.name).count
-          : 0;
-    // count.innerText = cartItemIndex >= 0 ? cart.find((cartItem) => cartItem.name === item.name).count : 0;
+    } else count.innerText = cartItemIndex >= 0 ? cart[cartItemIndex].count : 0;
   });
 
   // // add content to item
