@@ -21,10 +21,15 @@ header {
   align-items: center;
   justify-content: space-between;
 }
-header h3 {
-  font-size: 30px;
+header a {
+  font-size: 18px;
   display: flex;
   align-items: center;
+  text-decoration: none;
+  color: var(--flippy-blue);
+}
+header #navbar-cart img:hover {
+  filter: invert(60%) sepia(72%) saturate(3355%) hue-rotate(157deg) brightness(89%) contrast(101%);
 }
 
 section {
@@ -57,4 +62,28 @@ section h1 {
   width: 25px;
   height: 25px;
   border-radius: 50%;
+}
+
+.cart-count {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.cart-count div {
+  width: 20%;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  border: none;
+  color: black;
+  display: inline-block;
+  text-align: center;
+  font-weight: bold;
+}
+.cart-count .btnAdd,
+.cart-count .btnSub {
+  cursor: pointer;
+  color: gray;
+  padding: 14px;
+  max-width: 50px;
+  border: 1px solid #888888;
 }/*# sourceMappingURL=default.css.map */

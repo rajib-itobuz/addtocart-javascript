@@ -23,10 +23,16 @@ header {
   align-items: center;
   justify-content: space-between;
 
-  h3 {
-    font-size: 30px;
+  a {
+    font-size: 18px;
     display: flex;
     align-items: center;
+    text-decoration: none;
+    color: var(--flippy-blue);
+  }
+
+  #navbar-cart img:hover {
+    filter: invert(60%) sepia(72%) saturate(3355%) hue-rotate(157deg) brightness(89%) contrast(101%);
   }
 }
 
@@ -61,5 +67,30 @@ section {
     width: 25px;
     height: 25px;
     border-radius: 50%;
+  }
+}
+
+.cart-count {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  div {
+    width: 20%;
+    min-width: fit-content;
+    border: none;
+    color: black;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .btnAdd,
+  .btnSub {
+    cursor: pointer;
+    color: gray;
+    padding: 14px;
+    max-width: 50px;
+    border: 1px solid #888888;
   }
 }

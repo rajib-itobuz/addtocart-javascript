@@ -22,10 +22,15 @@ header {
   align-items: center;
   justify-content: space-between;
 }
-header h3 {
-  font-size: 30px;
+header a {
+  font-size: 18px;
   display: flex;
   align-items: center;
+  text-decoration: none;
+  color: var(--flippy-blue);
+}
+header #navbar-cart img:hover {
+  filter: invert(60%) sepia(72%) saturate(3355%) hue-rotate(157deg) brightness(89%) contrast(101%);
 }
 
 section {
@@ -60,6 +65,30 @@ section h1 {
   border-radius: 50%;
 }
 
+.cart-count {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.cart-count div {
+  width: 20%;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  border: none;
+  color: black;
+  display: inline-block;
+  text-align: center;
+  font-weight: bold;
+}
+.cart-count .btnAdd,
+.cart-count .btnSub {
+  cursor: pointer;
+  color: gray;
+  padding: 14px;
+  max-width: 50px;
+  border: 1px solid #888888;
+}
+
 #flex-container {
   display: flex;
   margin: auto;
@@ -70,32 +99,50 @@ section h1 {
 #flex-container .item {
   padding: 20px;
   display: flex;
-  border: 2px solid black;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid gray;
   border-radius: 10px;
 }
 #flex-container .item img {
-  aspect-ratio: 4/3;
+  width: 100%;
   height: 200px;
   -o-object-fit: contain;
      object-fit: contain;
 }
 #flex-container .item .content {
   width: 100%;
-  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+#flex-container .item .content .cross-btn {
+  background: white;
+  cursor: pointer;
+  font-size: 10px;
+  color: gray;
+  margin-left: auto;
+}
+#flex-container .item .content .cross-btn:hover {
+  color: blue;
 }
 #flex-container .item .content h5 {
-  font-size: 25px;
+  font-size: 18px;
   font-weight: 500;
 }
 #flex-container .item .content h2 {
   color: var(--flippy-blue);
   margin-block: 20px;
+  letter-spacing: 1px;
+  font-size: 22px;
 }
 #flex-container .item .content h2::before {
   content: "₹";
 }
 #flex-container .item .content h3 {
-  margin-block: 20px;
+  margin-block: 20px 10px;
+}
+#flex-container .item .content h3 .cart-count {
+  margin-top: 10px;
 }
 #flex-container .item .content h3::before {
   content: "Quantity : ";
@@ -103,10 +150,50 @@ section h1 {
 
 #total-price {
   margin-block: 40px 20px;
+  padding-inline: 20px;
+}
+#total-price h3 {
+  padding-block: 20px;
+}
+#total-price h3:first-child {
+  border-top: 1px dashed gray;
+}
+#total-price h3:nth-child(4) {
+  border-top: 1px dashed gray;
+}
+#total-price h3:nth-child(4) span:nth-child(2):before {
+  content: "₹ ";
+}
+#total-price button {
+  background: var(--flippy-blue);
   padding: 10px;
-  border-top: 2px dashed gray;
+  cursor: pointer;
+  width: 200px;
+  border: none;
+  border-radius: 4px;
+  color: white;
 }
 #total-price span {
+  font-weight: 400;
   display: inline-block;
-  margin-left: auto;
+}
+#total-price span:nth-child(1) {
+  font-size: 14px;
+  width: 60%;
+}
+#total-price span:nth-child(2) {
+  font-size: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  #flex-container .item {
+    flex-direction: row;
+    align-items: center;
+  }
+  #flex-container .item img {
+    max-width: 200px;
+  }
+  #flex-container .item .content {
+    margin-left: 10px;
+  }
 }/*# sourceMappingURL=cart.css.map */
