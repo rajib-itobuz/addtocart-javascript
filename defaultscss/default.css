@@ -1,0 +1,60 @@
+:root {
+  --flippy-blue: #047bd5;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: sans-serif;
+  padding: 0;
+}
+
+header {
+  height: 80px;
+  letter-spacing: 2px;
+  display: flex;
+  padding-inline: 20px;
+  margin-inline: auto;
+  width: 100%;
+  max-width: 960px;
+  color: var(--flippy-blue);
+  align-items: center;
+  justify-content: space-between;
+}
+header h3 {
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+}
+
+section {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 960px;
+}
+section h1 {
+  font-weight: 400;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+#navbar-cart {
+  position: relative;
+  cursor: pointer;
+}
+#navbar-cart #cart-count {
+  position: absolute;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  top: -15px;
+  right: -15px;
+  display: inline-block;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}/*# sourceMappingURL=default.css.map */

@@ -1,0 +1,61 @@
+@import "../defaultscss/default.scss";
+
+#flex-container {
+  display: flex;
+  margin: auto;
+  max-width: 90%;
+  flex-direction: column;
+  gap: 20px;
+
+  .item {
+    padding: 20px;
+    display: flex;
+
+    border: 2px solid black;
+    border-radius: 10px;
+
+    img {
+      aspect-ratio: 4/3;
+      height: 200px;
+      object-fit: contain;
+    }
+
+    .content {
+      width: 100%;
+      margin-left: 20px;
+
+      h5 {
+        font-size: 25px;
+        font-weight: 500;
+      }
+
+      h2 {
+        color: var(--flippy-blue);
+        margin-block: 20px;
+
+        &::before {
+          content: "₹";
+        }
+      }
+
+      h3 {
+        margin-block: 20px;
+
+        &::before {
+          content: "Quantity : ";
+        }
+      }
+    }
+  }
+}
+
+#total-price {
+  margin-block: 40px 20px;
+  padding: 10px;
+  border-top: 2px dashed gray;
+
+  span {
+    display: inline-block;
+    margin-left: auto;
+  }
+}
