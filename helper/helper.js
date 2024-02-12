@@ -170,7 +170,7 @@ export const createItem = (item, flexContainer) => {
 
   itemCard.append(productImage, contentDiv);
 
-  if (findinCart(item) == null) {
+  if (findinCart(item) === null) {
     cartCountDiv.style.display = "none";
     button.style.display = "block";
   } else {
@@ -227,7 +227,7 @@ const onEventCallback = (button, callbackName, item, ...argv) => {
       argv[3].innerText = item.price * item.count;
       updatePriceSection(cart, discount, shipping);
 
-      if (cartItemIndex == -1) argv[4].removeChild(argv[5]);
+      if (cartItemIndex === -1) argv[4].removeChild(argv[5]);
       hideInvoiceSection();
     }
 

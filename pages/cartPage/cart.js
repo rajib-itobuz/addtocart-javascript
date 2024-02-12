@@ -3,7 +3,7 @@ import {
   createItem,
   updatePriceSection,
   hideInvoiceSection,
-} from "../helper/helper.js";
+} from "../../helper/helper.js";
 
 const flexContainer = document.getElementById("flex-container");
 
