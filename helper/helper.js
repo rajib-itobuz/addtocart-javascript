@@ -1,14 +1,18 @@
+// read localstorage data
 const dbData = localStorage.getItem("dbData");
 const cartData = localStorage.getItem("cartData");
 
-export const data = dbData != "" && dbData != null ? JSON.parse(dbData) : [];
+// parse local storage and save into variables
+export const itemsData =
+  dbData != "" && dbData != null ? JSON.parse(dbData) : [];
 export const cart =
   cartData != "" && cartData != null ? JSON.parse(cartData) : [];
-const cartCount = document.getElementById("cart-count");
 
+// update cart count
+const cartCount = document.getElementById("cart-count");
 cartCount.innerText = cart.reduce((acc, curr) => acc + curr.count, 0);
 
-///cart section
+//cart section
 const totalPriceSection = document.getElementById("total-price");
 const discount = 0.03;
 const shipping = 150;
@@ -17,12 +21,16 @@ const discvalue = document.createElement("h3");
 const shipCharge = document.createElement("h3");
 const totalAmt = document.createElement("h3");
 const checkOutBtn = document.createElement("button");
+
+// hide invoice section if cart has no items
 export const hideInvoiceSection = () => {
   if (cart.length === 0) {
     totalPriceSection.innerHTML = "No Cart Items Added";
     totalPriceSection.style.textAlign = "center";
   }
 };
+
+// update price section in cart page on item update
 export const updatePriceSection = (cart, discount, charges) => {
   const cartAmount = cart.reduce((a, curr) => a + curr.count * curr.price, 0);
   const discountValue = cartAmount * discount;
@@ -39,6 +47,8 @@ export const updatePriceSection = (cart, discount, charges) => {
     charges
   ).toFixed(2)}</span>`;
 };
+
+//show total priceSection only in cart Page
 if (totalPriceSection) {
   invValue.innerHTML = "<span>Cart Value :</span> <span>0</span>";
   discvalue.innerHTML = "<span>Discount Applied :</span> <span>0</span>";
@@ -58,11 +68,13 @@ if (totalPriceSection) {
   updatePriceSection(cart, discount, shipping);
 }
 
+// save update to localstorage and update cart count
 const saveUpdate = () => {
   localStorage.setItem("cartData", JSON.stringify(cart));
   cartCount.innerText = cart.reduce((acc, curr) => acc + curr.count, 0);
 };
 
+// add to cart functionality
 const addtoCart = (item, cartCountDiv, button) => {
   var index = cart.findIndex((cartItem) => cartItem.name === item.name);
   if (index >= 0) {
@@ -78,6 +90,7 @@ const addtoCart = (item, cartCountDiv, button) => {
   }
 };
 
+// remove from cart functionality
 const removefromCart = (item, cartCountDiv, button) => {
   var index = cart.findIndex((cartItem) => cartItem.name === item.name);
   if (index >= 0 && cart[index].count > 1) {
@@ -89,18 +102,24 @@ const removefromCart = (item, cartCountDiv, button) => {
   }
 };
 
-const deletefromCart=(item)=>{
-  cart.splice(cart.findIndex((cartItem) => cartItem === item), 1);
-}
+// delete from cart if clicked on remove
+const deletefromCart = (item) => {
+  cart.splice(
+    cart.findIndex((cartItem) => cartItem === item),
+    1
+  );
+};
 
+// find in cart if required
 const findinCart = (item) =>
   cart != [] ? cart.find((cartItem) => cartItem.name === item.name) : null;
 
+// create and export items
 export const createItem = (item, flexContainer) => {
-  const itemDiv = document.createElement("div");
-  itemDiv.classList.add("item");
+  const itemCard = document.createElement("div");
+  itemCard.classList.add("item");
 
-  // // add item fields
+  // add item fields
   const productImage = document.createElement("img");
   productImage.src = item.imgUrl;
 
@@ -119,7 +138,7 @@ export const createItem = (item, flexContainer) => {
   button.innerText = "Add to Cart";
   button.classList.add("btn-cart");
 
-  // // card count div
+  // card count div
   const cartCountDiv = document.createElement("div");
   cartCountDiv.classList.add("cart-count");
 
@@ -149,7 +168,7 @@ export const createItem = (item, flexContainer) => {
   // add content to card
   contentDiv.append(title, price, button, quantity);
 
-  itemDiv.append(productImage, contentDiv);
+  itemCard.append(productImage, contentDiv);
 
   if (findinCart(item) == null) {
     cartCountDiv.style.display = "none";
@@ -159,7 +178,7 @@ export const createItem = (item, flexContainer) => {
     button.style.display = "none";
   }
 
-  flexContainer.appendChild(itemDiv);
+  flexContainer.appendChild(itemCard);
 
   onEventCallback(button, "add", item, button, cartCountDiv, count);
   onEventCallback(
@@ -171,7 +190,7 @@ export const createItem = (item, flexContainer) => {
     count,
     price,
     flexContainer,
-    itemDiv
+    itemCard
   );
   onEventCallback(
     crossButton,
@@ -182,17 +201,19 @@ export const createItem = (item, flexContainer) => {
     count,
     price,
     flexContainer,
-    itemDiv
+    itemCard
   );
   onEventCallback(btnAdd, "add", item, button, cartCountDiv, count, price);
 };
 
+// mapping of function so that its easier to bind actions to common function
 const mapmyFunction = {
   add: addtoCart,
   remove: removefromCart,
-  delete:deletefromCart,
+  delete: deletefromCart,
 };
 
+// single add event listener call function
 const onEventCallback = (button, callbackName, item, ...argv) => {
   button.addEventListener("click", () => {
     mapmyFunction[callbackName](item, argv[1], argv[0]);
@@ -202,11 +223,10 @@ const onEventCallback = (button, callbackName, item, ...argv) => {
     const countItem = cartItemIndex >= 0 ? cart[cartItemIndex].count : 0;
     argv[2].innerText = countItem;
 
-
     if (item.count) {
       argv[3].innerText = item.price * item.count;
       updatePriceSection(cart, discount, shipping);
-      
+
       if (cartItemIndex == -1) argv[4].removeChild(argv[5]);
       hideInvoiceSection();
     }

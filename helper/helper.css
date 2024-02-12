@@ -21,6 +21,7 @@ header {
   align-items: center;
   justify-content: space-between;
 }
+
 header a {
   font-size: 18px;
   display: flex;
@@ -29,6 +30,7 @@ header a {
   text-decoration: none;
   color: var(--flippy-blue);
 }
+
 header #navbar-cart img:hover {
   filter: invert(60%) sepia(72%) saturate(3355%) hue-rotate(157deg) brightness(89%) contrast(101%);
 }
@@ -38,6 +40,7 @@ section {
   width: 100%;
   max-width: 960px;
 }
+
 section h1 {
   font-weight: 400;
   margin-bottom: 20px;
@@ -48,6 +51,7 @@ section h1 {
   position: relative;
   cursor: pointer;
 }
+
 #navbar-cart #cart-count {
   position: absolute;
   background-color: red;
@@ -70,6 +74,7 @@ section h1 {
   flex-wrap: nowrap;
   align-items: center;
 }
+
 .cart-count div {
   width: 20%;
   min-width: -moz-fit-content;
@@ -81,6 +86,7 @@ section h1 {
   text-align: center;
   font-weight: bold;
 }
+
 .cart-count .btnAdd,
 .cart-count .btnSub {
   cursor: pointer;
@@ -88,4 +94,6 @@ section h1 {
   padding: 14px;
   max-width: 50px;
   border: 1px solid #888888;
-}/*# sourceMappingURL=helper.css.map */
+}
+
+/*# sourceMappingURL=helper.css.map */
