@@ -116,16 +116,6 @@ section h1 {
   display: flex;
   flex-direction: column;
 }
-#flex-container .item .content .cross-btn {
-  background: white;
-  cursor: pointer;
-  font-size: 10px;
-  color: gray;
-  margin-left: auto;
-}
-#flex-container .item .content .cross-btn:hover {
-  color: blue;
-}
 #flex-container .item .content h5 {
   font-size: 18px;
   font-weight: 500;
@@ -144,6 +134,16 @@ section h1 {
 }
 #flex-container .item .content h3 .cart-count {
   margin-top: 10px;
+}
+#flex-container .item .content h3 .cart-count .cross-btn {
+  background: white;
+  cursor: pointer;
+  font-size: 15px;
+  color: gray;
+  margin-left: auto;
+}
+#flex-container .item .content h3 .cart-count .cross-btn:hover {
+  color: red;
 }
 #flex-container .item .content h3::before {
   content: "Quantity : ";
