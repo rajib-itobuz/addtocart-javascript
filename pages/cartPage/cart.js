@@ -3,11 +3,19 @@ import {
   createItem,
   updatePriceSection,
   hideInvoiceSection,
+  callEventListener,
 } from "../../helper/helper.js";
 
 const flexContainer = document.getElementById("flex-container");
 
-cart.forEach((item) => createItem(item, flexContainer));
+const currentUser = localStorage.getItem("currentUser");
+if (!currentUser) {
+  window.location.replace("/pages/loginPage");
+} else {
+  cart.forEach((item, ind) => createItem(item, ind, flexContainer));
 
-updatePriceSection(cart, 0.03, 150);
-hideInvoiceSection();
+  callEventListener(flexContainer, true);
+
+  updatePriceSection(cart, 0.03, 150);
+  hideInvoiceSection();
+}

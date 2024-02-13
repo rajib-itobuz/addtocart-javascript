@@ -10,7 +10,8 @@ export const cart =
 
 // update cart count
 const cartCount = document.getElementById("cart-count");
-cartCount.innerText = cart.reduce((acc, curr) => acc + curr.count, 0);
+cartCount.innerText = cart.length;
+// cart.reduce((acc, curr) => acc + curr.count, 0);
 
 //cart section
 const totalPriceSection = document.getElementById("total-price");
@@ -71,7 +72,19 @@ if (totalPriceSection) {
 // save update to localstorage and update cart count
 const saveUpdate = () => {
   localStorage.setItem("cartData", JSON.stringify(cart));
-  cartCount.innerText = cart.reduce((acc, curr) => acc + curr.count, 0);
+  cartCount.innerText = cart.length;
+  // cart.reduce((acc, curr) => acc + curr.count, 0);
+  const curruser = localStorage.getItem("currentUser");
+  if (curruser) {
+    const list = localStorage.getItem("userList");
+    const userList = list != "" && list != null ? JSON.parse(list) : [];
+    const index = userList.findIndex(
+      (item) => item.uid === JSON.parse(curruser)
+    );
+    userList[index].cart = cart;
+
+    localStorage.setItem("userList", JSON.stringify(userList));
+  }
 };
 
 // add to cart functionality
@@ -115,9 +128,10 @@ const findinCart = (item) =>
   cart != [] ? cart.find((cartItem) => cartItem.name === item.name) : null;
 
 // create and export items
-export const createItem = (item, flexContainer) => {
+export const createItem = (item, ind, flexContainer) => {
   const itemCard = document.createElement("div");
   itemCard.classList.add("item");
+  itemCard.setAttribute("id", `itemCard-${ind}`);
 
   // add item fields
   const productImage = document.createElement("img");
@@ -132,18 +146,24 @@ export const createItem = (item, flexContainer) => {
 
   const price = document.createElement("h2");
   price.innerText = item.count ? item.count * item.price : item.price;
+  price.setAttribute("id", `price-${ind}`);
 
   // button
   const button = document.createElement("button");
   button.innerText = "Add to Cart";
   button.classList.add("btn-cart");
+  button.setAttribute("id", `btn-cart-${ind}`);
+  button.dataset.id = ind;
 
   // card count div
   const cartCountDiv = document.createElement("div");
   cartCountDiv.classList.add("cart-count");
+  cartCountDiv.setAttribute("id", `cart-count-${ind}`);
 
   const btnAdd = document.createElement("div");
   btnAdd.classList.add("btnAdd");
+  btnAdd.setAttribute("id", `btnAdd-${ind}`);
+  btnAdd.dataset.id = ind;
   btnAdd.innerText = "+";
 
   const count = document.createElement("div");
@@ -152,14 +172,19 @@ export const createItem = (item, flexContainer) => {
   );
   count.innerText = cartItemIndex >= 0 ? cart[cartItemIndex].count : 1;
   count.style.fontSize = "25px";
+  count.setAttribute("id", `count-${ind}`);
 
   const btnSub = document.createElement("div");
   btnSub.innerText = "-";
   btnSub.classList.add("btnSub");
+  btnSub.setAttribute("id", `btnSub-${ind}`);
+  btnSub.dataset.id = ind;
 
   const crossButton = document.createElement("a");
   crossButton.classList.add("cross-btn");
+  crossButton.setAttribute("id", `crossbtn-${ind}`);
   crossButton.innerText = "Remove";
+  crossButton.dataset.id = ind;
 
   cartCountDiv.append(btnSub, count, btnAdd, crossButton);
   const quantity = document.createElement("h3");
@@ -170,7 +195,7 @@ export const createItem = (item, flexContainer) => {
 
   itemCard.append(productImage, contentDiv);
 
-  if (findinCart(item) === null) {
+  if (findinCart(item) == null) {
     cartCountDiv.style.display = "none";
     button.style.display = "block";
   } else {
@@ -179,31 +204,6 @@ export const createItem = (item, flexContainer) => {
   }
 
   flexContainer.appendChild(itemCard);
-
-  onEventCallback(button, "add", item, button, cartCountDiv, count);
-  onEventCallback(
-    btnSub,
-    "remove",
-    item,
-    button,
-    cartCountDiv,
-    count,
-    price,
-    flexContainer,
-    itemCard
-  );
-  onEventCallback(
-    crossButton,
-    "delete",
-    item,
-    button,
-    cartCountDiv,
-    count,
-    price,
-    flexContainer,
-    itemCard
-  );
-  onEventCallback(btnAdd, "add", item, button, cartCountDiv, count, price);
 };
 
 // mapping of function so that its easier to bind actions to common function
@@ -214,23 +214,79 @@ const mapmyFunction = {
 };
 
 // single add event listener call function
-const onEventCallback = (button, callbackName, item, ...argv) => {
-  button.addEventListener("click", () => {
-    mapmyFunction[callbackName](item, argv[1], argv[0]);
-    const cartItemIndex = cart.findIndex(
-      (cartItem) => cartItem.name === item.name
-    );
-    const countItem = cartItemIndex >= 0 ? cart[cartItemIndex].count : 0;
-    argv[2].innerText = countItem;
+const onEventCallback = (callbackName, item, ...argv) => {
+  mapmyFunction[callbackName](item, argv[1], argv[0]);
+  const cartItemIndex = cart.findIndex(
+    (cartItem) => cartItem.name === item.name
+  );
+  const countItem = cartItemIndex >= 0 ? cart[cartItemIndex].count : 0;
+  argv[2].innerText = countItem;
 
-    if (item.count) {
-      argv[3].innerText = item.price * item.count;
-      updatePriceSection(cart, discount, shipping);
+  if (item.count) {
+    argv[3].innerText = item.price * item.count;
+    updatePriceSection(cart, discount, shipping);
 
-      if (cartItemIndex === -1) argv[4].removeChild(argv[5]);
-      hideInvoiceSection();
+    if (cartItemIndex === -1) argv[4].removeChild(argv[5]);
+    hideInvoiceSection();
+  }
+
+  saveUpdate();
+};
+
+export const callEventListener = (flexContainer, flag) =>
+  flexContainer.addEventListener("click", (e) => {
+    const index = e.target.dataset?.id;
+
+    const cardCountDiv = document.getElementById(`cart-count-${index}`);
+    const count = document.getElementById(`count-${index}`);
+    const button = document.getElementById(`btn-cart-${index}`);
+    const price = document.getElementById(`price-${index}`);
+    const itemCard = document.getElementById(`itemCard-${index}`);
+
+    if (e.target.id === `btn-cart-${index}`) {
+      onEventCallback(
+        "add",
+        flag ? cart[index] : itemsData[index],
+        button,
+        cardCountDiv,
+        count
+      );
+    } else if (e.target.id === `btnAdd-${index}`) {
+      onEventCallback(
+        "add",
+        flag ? cart[index] : itemsData[index],
+        button,
+        cardCountDiv,
+        count,
+        price
+      );
+    } else if (e.target.id === `btnSub-${index}`) {
+      onEventCallback(
+        "remove",
+        flag ? cart[index] : itemsData[index],
+        button,
+        cardCountDiv,
+        count,
+        price,
+        flexContainer,
+        itemCard
+      );
+    } else if (e.target.id === `crossbtn-${index}`) {
+      onEventCallback(
+        "delete",
+        flag ? cart[index] : itemsData[index],
+        button,
+        cardCountDiv,
+        count,
+        price,
+        flexContainer,
+        itemCard
+      );
     }
-
-    saveUpdate();
   });
+
+export const logout = () => {
+  localStorage.removeItem("currentUser");
+  localStorage.removeItem("cartData");
+  window.location.replace("/pages/loginPage");
 };

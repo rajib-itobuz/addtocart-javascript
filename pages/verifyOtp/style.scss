@@ -1,0 +1,18 @@
+@import "../../helper/helper.scss";
+
+section {
+    max-width: unset;
+}
+
+.form-container {
+    h6 {
+        margin-top: 10px;
+        font-size: 12px;
+
+        &:hover {
+            text-decoration: underline;
+            color: var(--flippy-blue);
+            text-underline-offset: 5px;
+        }
+    }
+}

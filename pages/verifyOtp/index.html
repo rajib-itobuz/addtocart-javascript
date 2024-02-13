@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Otp</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+</head>
+
+<body>
+    <section class="container">
+        <div class="form-container">
+            <form id="myForm">
+                <a class="logo">
+                    <img src="/images/logo.png" alt="logo" width="100px" height="100px" />
+                    Flippy
+                </a>
+                <h3>Yayyy!! You r one step behind</h3>
+                <h2>Enter the OTP</h2>
+
+                <!-- email -->
+                <input type="tel" name="otp" class="form-control" id="otp" pattern="\d{6}" maxlength="6" autofocus />
+                <span id="otp-error">&nbsp;</span>
+
+
+                <button type="submit" id="login-submit pointer">Submit</button>
+                <h6 class="pointer" id="timer"></h6>
+            </form>
+
+        </div>
+    </section>
+
+    <script type="text/javascript">
+        (function () {
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init({
+                publicKey: "nTKN_9Xz5tPG0WNlU",
+            });
+        })();
+    </script>
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>

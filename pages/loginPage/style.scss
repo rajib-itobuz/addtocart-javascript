@@ -1,0 +1,17 @@
+@import "../../helper/helper.scss";
+
+section {
+    max-width: unset;
+}
+
+.form-container {
+    padding-block: 30px;
+}
+
+#email-errror {
+    visibility: hidden;
+}
+
+#password-error {
+    display: none;
+}
