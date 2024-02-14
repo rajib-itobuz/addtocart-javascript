@@ -123,8 +123,6 @@ if (currentUser) {
             })
             .then(
               (response) => {
-                console.log("SUCCESS!", response.status, response.text);
-                console.log(otp);
                 const dt = new Date();
                 localStorage.setItem(
                   "tempUser",
@@ -140,9 +138,7 @@ if (currentUser) {
                 localStorage.setItem("otp", otp);
                 window.location = "/pages/verifyOtp/";
               },
-              (error) => {
-                console.log("FAILED...", error);
-              }
+              (error) => {}
             );
         }
       }

@@ -62,7 +62,6 @@ if (!tempUser || !otp) {
         fetchUserData != null && fetchUserData != ""
           ? JSON.parse(fetchUserData)
           : null;
-      console.log(user);
       if (user) {
         const otp = Math.floor(Math.random() * 999999) + 100000;
         emailjs
@@ -77,9 +76,7 @@ if (!tempUser || !otp) {
               timeout = 30;
               timerFunction();
             },
-            (error) => {
-              console.log("FAILED...", error);
-            }
+            (error) => {}
           );
       }
     }
