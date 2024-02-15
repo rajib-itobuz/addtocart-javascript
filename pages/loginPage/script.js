@@ -3,10 +3,10 @@ const passwordinput = document.getElementById("password");
 const submitBtn = document.getElementById("login-submit");
 const emailError = document.getElementById("email-error");
 const passwordError = document.getElementById("password-error");
-const upperCaseError = document.getElementById("uppercaseError");
-const lowerCaseError = document.getElementById("lowercaseError");
-const symbolError = document.getElementById("symbolError");
-const numberError = document.getElementById("numberError");
+const upperCaseError = document.getElementById("uppercase-error");
+const lowerCaseError = document.getElementById("lowercase-error");
+const symbolError = document.getElementById("symbol-error");
+const numberError = document.getElementById("number-error");
 const incorrectError = document.getElementById("incorrect-error");
 
 const currentUser = localStorage.getItem("currentUser");

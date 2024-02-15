@@ -1,11 +1,10 @@
 const myForm = document.getElementById("myForm");
 const otpField = document.getElementById("otp");
+const otpError = document.getElementById("otp-error");
+const timer = document.getElementById("timer");
 
 const tempUser = localStorage.getItem("tempUser");
 const otp = localStorage.getItem("otp");
-
-const otpError = document.getElementById("otp-error");
-const timer = document.getElementById("timer");
 
 let timeout = 30;
 let otpTimer;
@@ -54,6 +53,7 @@ if (!tempUser || !otp) {
       otpError.textContent = "Otp incorrect";
     }
   });
+
   timer.addEventListener("click", () => {
     if (!!!timeout) {
       const fetchUserData = localStorage.getItem("tempUser");
@@ -82,5 +82,3 @@ if (!tempUser || !otp) {
     }
   });
 }
-
-// timerFunction();

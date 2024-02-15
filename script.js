@@ -7,6 +7,7 @@ import {
 
 const flexContainer = document.getElementById("flex-container");
 const logoutBtn = document.getElementById("navbar-logout");
+
 const currentUser = localStorage.getItem("currentUser");
 if (!currentUser) {
   window.location.replace("/pages/loginPage");

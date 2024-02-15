@@ -11,7 +11,6 @@ export const cart =
 // update cart count
 const cartCount = document.getElementById("cart-count");
 cartCount.innerText = cart.length;
-// cart.reduce((acc, curr) => acc + curr.count, 0);
 
 //cart section
 const totalPriceSection = document.getElementById("total-price");
@@ -73,7 +72,6 @@ if (totalPriceSection) {
 const saveUpdate = () => {
   localStorage.setItem("cartData", JSON.stringify(cart));
   cartCount.innerText = cart.length;
-  // cart.reduce((acc, curr) => acc + curr.count, 0);
   const curruser = localStorage.getItem("currentUser");
   if (curruser) {
     const list = localStorage.getItem("userList");
@@ -234,6 +232,7 @@ const onEventCallback = (callbackName, item, ...argv) => {
   saveUpdate();
 };
 
+// call and attach addeevent listener
 export const callEventListener = (flexContainer, flag) =>
   flexContainer.addEventListener("click", (e) => {
     const index = e.target.dataset?.id;
