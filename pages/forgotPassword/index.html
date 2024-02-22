@@ -19,16 +19,22 @@
                     <img src="/images/logo.png" alt="logo" width="100px" height="100px" />
                     Flippy
                 </a>
-                <h3>Yayyy!! You r one step behind</h3>
-                <h2>Enter the OTP</h2>
+                <h3>Let's change your password</h3>
+                <h2>Enter new password</h2>
 
                 <!-- email -->
-                <input type="tel" name="otp" class="form-control" id="otp" pattern="\d{6}" maxlength="6" autofocus />
-                <span id="otp-error">&nbsp;</span>
+                <label for="password">Password :</label>
+                <input type="password" name="password" required class="form-control" id="password"
+                    placeholder="enter your password" />
+                <span id="password-error">Password must contain atleast
+                    <span id="uppercase-error">one uppercase character</span>
+                    <span id="lowercase-error">one lowercase character</span>
+                    <span id="symbol-error">one symbol</span>
+                    <span id="number-error">one number</span>
+                </span>
 
-
-                <button type="submit" id="login-submit pointer">Submit</button>
-                <h6 class="pointer" id="timer"></h6>
+                <span id="incorrect-error">&nbsp;</span>
+                <button type="submit" id="login-submit" class="pointer">Submit</button>
             </form>
 
         </div>

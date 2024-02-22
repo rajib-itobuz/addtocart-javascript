@@ -64,20 +64,20 @@ if (!tempUser || !otp) {
           : null;
       if (user) {
         const otp = Math.floor(Math.random() * 999999) + 100000;
-        emailjs
-          .send("service_m51wl4j", "cotnact_form", {
-            email: user.email,
-            subject: "Your Otp for Flippy Ecommerce Website",
-            message: `Hi your Otp is ${otp}`,
-          })
-          .then(
-            (response) => {
-              localStorage.setItem("otp", otp);
-              timeout = 30;
-              timerFunction();
-            },
-            (error) => {}
-          );
+        sendEmail(
+          "register_flippy_otp",
+          user.email,
+          "Your Otp for Flippy Ecommerce Website",
+          `Hi your Otp is ${otp}`,
+          "",
+          () => {
+            localStorage.setItem("otp", otp);
+            timeout = 30;
+            timerFunction();
+          }
+        );
+
+        //
       }
     }
   });

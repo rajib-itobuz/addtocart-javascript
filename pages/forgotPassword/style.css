@@ -14,10 +14,9 @@
 }
 
 header {
+  height: 80px;
   letter-spacing: 2px;
   display: flex;
-  flex-wrap: wrap;
-  margin-top: 10px;
   padding-inline: 20px;
   margin-inline: auto;
   width: 100%;
@@ -216,4 +215,20 @@ section h1 {
 
 .pointer {
   cursor: pointer;
-}/*# sourceMappingURL=helper.css.map */
+}
+
+section {
+  max-width: unset;
+}
+
+.form-container {
+  padding-block: 10px;
+}
+
+#email-errror {
+  visibility: hidden;
+}
+
+#password-error {
+  display: none;
+}/*# sourceMappingURL=style.css.map */

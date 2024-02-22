@@ -9,6 +9,10 @@
   padding: 0;
 }
 
+.text-center {
+  text-align: center;
+}
+
 header {
   height: 80px;
   letter-spacing: 2px;
@@ -218,7 +222,7 @@ section {
 }
 
 .form-container {
-  padding-block: 30px;
+  padding-block: 10px;
 }
 
 #email-errror {
@@ -227,4 +231,10 @@ section {
 
 #password-error {
   display: none;
+}
+
+#forgotPass {
+  margin-top: 10px;
+  cursor: pointer;
+  text-align: center;
 }/*# sourceMappingURL=style.css.map */

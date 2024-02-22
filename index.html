@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FlipKart</title>
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -14,6 +15,7 @@
             <img src="images/logo.png" alt="logo" width="50px" height="50px" />
             FlipKart
         </a>
+        <input type="search" placeholder="Search items here" id="search">
         <div class="navbar-actions">
             <a href="./pages/cartPage/cart.html" id="navbar-cart">
                 <img src="images/cart.svg" alt="cart-icon" width="30px" height="30px" />
@@ -25,8 +27,27 @@
         </div>
     </header>
 
-    <section id="greetings">
+    <section id="carousel">
+        <div id="img-carousel">
+            <img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/5fc9e7a7f342b6a6.jpg?q=20" alt="">
+            <img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/c0440a58f0081d32.jpeg?q=20" alt="">
+            <img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/5a2311ff9e965a96.jpeg?q=20" alt="">
+            <img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/352e6f0f8034fab5.jpg?q=20" alt="">
+            <img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/aa1b2bdcf519b468.jpg?q=20" alt="">
+        </div>
 
+        <img id="leftButton" class="carousel-button" src="./images/chevron-left.svg"></img>
+        <div id="slideStatus">
+            <span class="slider slider-1"></span>
+            <span class="slider slider-2"></span>
+            <span class="slider slider-3"></span>
+            <span class="slider slider-4"></span>
+            <span class="slider slider-5"></span>
+        </div>
+        <img id="rightButton" class="carousel-button" src="./images/chevron-right.svg"></img>
+    </section>
+
+    <section id="greetings">
     </section>
 
     <section>

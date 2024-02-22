@@ -1,3 +1,5 @@
+import { sendEmail } from "../helperLogin/emailHelper.js";
+
 const emailinput = document.getElementById("email");
 const passwordinput = document.getElementById("password");
 const submitBtn = document.getElementById("login-submit");
@@ -7,9 +9,12 @@ const upperCaseError = document.getElementById("uppercase-error");
 const lowerCaseError = document.getElementById("lowercase-error");
 const symbolError = document.getElementById("symbol-error");
 const numberError = document.getElementById("number-error");
+const inpForm = document.getElementById("myForm");
+const forgotPassword = document.getElementById("forgotPass");
 const incorrectError = document.getElementById("incorrect-error");
 
 const currentUser = localStorage.getItem("currentUser");
+
 if (currentUser) {
   window.location.replace("/");
 } else {
@@ -88,66 +93,103 @@ if (currentUser) {
 
   let otp = 0;
 
-  document
-    .getElementById("myForm")
-    .addEventListener("submit", function (event) {
-      event.preventDefault();
-      otp = Math.floor(Math.random() * 999999) + 100000;
-      const email = emailinput.value;
-      const password = passwordinput.value;
-      let formValidationStatus = 0;
-      if (email.trim() != "" && validateEmail(email)) {
-        formValidationStatus++;
-      }
-      if (password.trim() != "" && validatePassword(password)) {
-        formValidationStatus++;
-      }
+  const saveUser = (email, password) => {
+    const dt = new Date();
+    localStorage.setItem(
+      "tempUser",
+      JSON.stringify({
+        uid: dt.getTime().toString(),
+        email: email,
+        password: password,
+        timestamp: dt.toDateString(),
+        cart: [],
+      })
+    );
 
-      if (formValidationStatus == 2) {
-        const user = userList.find((item) => item.email === email);
+    localStorage.setItem("otp", otp);
+    window.location = "/pages/verifyOtp/";
+  };
 
-        if (user) {
-          if (user.password === password) {
-            localStorage.setItem("cartData", JSON.stringify(user.cart));
-            localStorage.setItem("currentUser", JSON.stringify(user.uid));
-            window.location.replace("/");
-          } else {
-            incorrectError.innerText = "Email/Password is incorrect";
-          }
+  const saveForgotPasswordInstance = (email) => {
+    const dt = new Date();
+    const validUpto = new Date().setMinutes(dt.getMinutes() + 5);
+    console.log(email);
+    localStorage.setItem(
+      "forgotPass",
+      JSON.stringify({
+        email: email,
+        validUpto,
+        timestamp: dt.toDateString(),
+      })
+    );
+    incorrectError.innerText = "Email Sent";
+  };
+
+  inpForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    otp = Math.floor(Math.random() * 999999) + 100000;
+    const email = emailinput.value;
+    const password = passwordinput.value;
+    let formValidationStatus = 0;
+    if (email.trim() != "" && validateEmail(email)) {
+      formValidationStatus++;
+    }
+    if (password.trim() != "" && validatePassword(password)) {
+      formValidationStatus++;
+    }
+
+    if (formValidationStatus == 2) {
+      const user = userList.find((item) => item.email === email);
+
+      if (user) {
+        if (user.password === password) {
+          localStorage.setItem("cartData", JSON.stringify(user.cart));
+          localStorage.setItem("currentUser", JSON.stringify(user.uid));
+          window.location.replace("/");
         } else {
-          emailjs
-            .send("service_m51wl4j", "cotnact_form", {
-              email: email,
-              subject: "Your Otp for Flippy Ecommerce Website",
-              message: `Hi your Otp is ${otp}`,
-            })
-            .then(
-              (response) => {
-                const dt = new Date();
-                localStorage.setItem(
-                  "tempUser",
-                  JSON.stringify({
-                    uid: dt.getTime().toString(),
-                    email: email,
-                    password: password,
-                    timestamp: dt.toDateString(),
-                    cart: [],
-                  })
-                );
-
-                localStorage.setItem("otp", otp);
-                window.location = "/pages/verifyOtp/";
-              },
-              (error) => {}
-            );
+          incorrectError.innerText = "Email/Password is incorrect";
         }
+      } else {
+        sendEmail(
+          "register_flippy_otp",
+          email,
+          "Your Otp for Flippy Ecommerce Website",
+          `Hi your Otp is ${otp}`,
+          "",
+          () => saveUser(email, password)
+        );
       }
-      //
-    });
+    }
+    //
+  });
 
   passwordinput.addEventListener("input", passwordInputCriteria);
   passwordinput.addEventListener(
     "focusout",
     () => (passwordError.style.display = "none")
   );
+
+  forgotPassword.addEventListener("click", (event) => {
+    otp = Math.floor(Math.random() * 999999) + 100000;
+    const email = emailinput.value;
+    const userIndex = userList.findIndex((u) => u.email === email);
+
+    if (!email) {
+      incorrectError.innerText = "Please Enter your email";
+    } else if (userIndex >= 0) {
+      incorrectError.innerHTML = "&nbsp;";
+      sendEmail(
+        "forgot_password",
+        email,
+        "Reset your password",
+        "Your link is valid for only 5mins.\n Click on link below to proceed",
+        `${window.location.origin}/pages/forgotPassword/`,
+        () => saveForgotPasswordInstance(email)
+      );
+    } else {
+      incorrectError.innerText = "User does not exist";
+    }
+  });
 }
+
+// () => saveForgotPasswordInstance(email)

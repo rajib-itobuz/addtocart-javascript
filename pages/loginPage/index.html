@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 
@@ -25,7 +26,7 @@
         <input type="email" name="email" class="form-control" required id="email" placeholder="enter your email" />
         <span id="email-error">&nbsp;</span>
 
-        <!-- subject -->
+        <!-- password -->
         <label for="password">Password :</label>
         <input type="password" name="password" required class="form-control" id="password"
           placeholder="enter your password" />
@@ -40,13 +41,13 @@
 
 
         <button type="submit" class="pointer">Submit</button>
+        <span id="forgotPass">Forgot password</span>
       </form>
     </div>
   </section>
 
   <script type="text/javascript">
     (function () {
-      // https://dashboard.emailjs.com/admin/account
       emailjs.init({
         publicKey: "nTKN_9Xz5tPG0WNlU",
       });
