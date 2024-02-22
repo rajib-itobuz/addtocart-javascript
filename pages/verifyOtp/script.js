@@ -1,3 +1,4 @@
+import { sendEmail } from "../../helper/emailHelper.js";
 const myForm = document.getElementById("myForm");
 const otpField = document.getElementById("otp");
 const otpError = document.getElementById("otp-error");
@@ -55,7 +56,7 @@ if (!tempUser || !otp) {
   });
 
   timer.addEventListener("click", () => {
-    if (!!!timeout) {
+    if (!timeout) {
       const fetchUserData = localStorage.getItem("tempUser");
 
       const user =

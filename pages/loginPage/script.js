@@ -1,4 +1,4 @@
-import { sendEmail } from "../helperLogin/emailHelper.js";
+import { sendEmail } from "../../helper/emailHelper.js";
 
 const emailinput = document.getElementById("email");
 const passwordinput = document.getElementById("password");
@@ -113,7 +113,6 @@ if (currentUser) {
   const saveForgotPasswordInstance = (email) => {
     const dt = new Date();
     const validUpto = new Date().setMinutes(dt.getMinutes() + 5);
-    console.log(email);
     localStorage.setItem(
       "forgotPass",
       JSON.stringify({
@@ -191,5 +190,3 @@ if (currentUser) {
     }
   });
 }
-
-// () => saveForgotPasswordInstance(email)

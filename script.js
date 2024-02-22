@@ -38,7 +38,6 @@ if (!currentUser) {
         return true;
       })
       .forEach((item, ind) => {
-        console.log(item);
         createItem(item, ind, flexContainer);
       });
   };

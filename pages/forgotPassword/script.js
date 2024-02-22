@@ -71,7 +71,6 @@ if (!forgotPassObj) {
     const userIndex = userList.findIndex(
       (u) => u.email === forgotPassObj.email
     );
-    console.log(userIndex);
     const currTime = new Date();
     if (userIndex < 0) {
       window.location.replace("/pages/loginPage");

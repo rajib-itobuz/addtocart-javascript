@@ -18,8 +18,6 @@ export const sendEmail = (
       (response) => {
         successCb();
       },
-      (error) => {
-        console.log(error);
-      }
+      (error) => {}
     );
 };
