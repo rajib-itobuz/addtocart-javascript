@@ -192,8 +192,7 @@ export const createItem = (item, ind, flexContainer) => {
   contentDiv.append(title, price, button, quantity);
 
   itemCard.append(productImage, contentDiv);
-
-  if (findinCart(item) === null) {
+  if (findinCart(item) == null) {
     cartCountDiv.style.display = "none";
     button.style.display = "block";
   } else {

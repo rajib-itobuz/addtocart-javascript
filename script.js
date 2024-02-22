@@ -21,7 +21,7 @@ if (!currentUser) {
   let currSlide = 0;
 
   const renderSlide = (currSlide = 0) => {
-    sliderItems[currSlide].style.backgroundColor = "#047bd5";
+    sliderItems[currSlide].style.backgroundColor = "#023e8a";
     sliderItems[currSlide].style.width = "20px";
 
     carouselSlides.forEach((slide, index) => {
@@ -41,10 +41,10 @@ if (!currentUser) {
       .sort((a, b) => {
         if (searchCriteria === 1) return a.price - b.price;
         else if (searchCriteria === 2) return b.price - a.price;
-        else return;
+        else return true;
       })
       .forEach((item, ind) => {
-        createItem(item, ind, flexContainer);
+        createItem(item, itemsData.findIndex(e => e.name === item.name), flexContainer);
       });
   };
 
@@ -89,7 +89,7 @@ if (!currentUser) {
   callEventListener(flexContainer, false);
 
   searchButton.addEventListener("input", () => {
-    renderitems(searchButton.value);
+    renderitems(searchButton.value, 0);
   });
 
   sortbyBtn.addEventListener("change", (e) => {
