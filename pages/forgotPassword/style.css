@@ -34,7 +34,7 @@ header a {
   text-decoration: none;
   color: var(--flippy-blue);
 }
-header #navbar-cart img:hover {
+header .navbar-cart img:hover {
   filter: invert(60%) sepia(72%) saturate(3355%) hue-rotate(157deg) brightness(89%) contrast(101%);
 }
 
@@ -53,11 +53,11 @@ section h1 {
   display: flex;
   gap: 20px;
 }
-.navbar-actions #navbar-cart {
+.navbar-actions .navbar-cart {
   position: relative;
   cursor: pointer;
 }
-.navbar-actions #navbar-cart #cart-count {
+.navbar-actions .navbar-cart .cart-count {
   position: absolute;
   background-color: red;
   color: white;
@@ -73,7 +73,7 @@ section h1 {
   height: 25px;
   border-radius: 50%;
 }
-.navbar-actions #navbar-logout:hover {
+.navbar-actions .navbar-logout:hover {
   filter: brightness(0) saturate(100%) invert(29%) sepia(74%) saturate(2814%) hue-rotate(337deg) brightness(94%) contrast(90%);
 }
 
@@ -134,7 +134,7 @@ section h1 {
   width: 90%;
   max-width: 500px;
 }
-.container .form-container #my-form {
+.container .form-container .myform {
   width: 100%;
   padding: 20px;
   min-height: 500px;
@@ -144,29 +144,29 @@ section h1 {
   justify-content: center;
   max-width: 500px;
 }
-.container .form-container #my-form .logo {
+.container .form-container .myform .logo {
   display: flex;
   align-items: center;
   font-size: 30px;
   transform: translate(-5%, 0%);
   font-weight: bold;
 }
-.container .form-container #my-form .logo img {
+.container .form-container .myform .logo img {
   -o-object-fit: cover;
      object-fit: cover;
 }
-.container .form-container #my-form h2 {
+.container .form-container .myform h2 {
   text-align: center;
   width: 100%;
   max-width: 300px;
   font-size: 16px;
   margin-block: 10px 20px;
 }
-.container .form-container #my-form h2:nth-child(1) {
+.container .form-container .myform h2:nth-child(1) {
   color: #f47547;
   font-size: 30px;
 }
-.container .form-container #my-form h3 {
+.container .form-container .myform h3 {
   text-align: center;
   width: 100%;
   max-width: 300px;
@@ -175,13 +175,13 @@ section h1 {
   color: gray;
   font-weight: 300;
 }
-.container .form-container #my-form label {
+.container .form-container .myform label {
   text-align: start;
   width: 100%;
   max-width: 300px;
   margin-bottom: 10px;
 }
-.container .form-container #my-form input {
+.container .form-container .myform input {
   display: block;
   width: 100%;
   max-width: 300px;
@@ -189,7 +189,7 @@ section h1 {
   border: 1px solid gray;
   padding: 10px 15px;
 }
-.container .form-container #my-form button {
+.container .form-container .myform button {
   width: 70%;
   max-width: 200px;
   border-radius: 8px;
@@ -223,11 +223,6 @@ section {
 .form-container {
   padding-block: 10px;
 }
-
-#email-errror {
-  visibility: hidden;
-}
-
-#password-error {
+.form-container .passworderror {
   display: none;
 }/*# sourceMappingURL=style.css.map */

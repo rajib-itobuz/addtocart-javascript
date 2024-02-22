@@ -6,12 +6,8 @@ section {
 
 .form-container {
     padding-block: 10px;
-}
 
-#email-errror {
-    visibility: hidden;
-}
-
-#password-error {
-    display: none;
+    .passworderror {
+        display: none;
+    }
 }

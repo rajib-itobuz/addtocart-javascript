@@ -6,18 +6,18 @@ section {
 
 .form-container {
     padding-block: 10px;
-}
 
-#email-errror {
-    visibility: hidden;
-}
+    .emailerrror {
+        visibility: hidden;
+    }
 
-#password-error {
-    display: none;
-}
+    .passworderror {
+        display: none;
+    }
 
-#forgot-pass {
-    margin-top: 10px;
-    cursor: pointer;
-    text-align: center;
+    .forgotpass {
+        margin-top: 10px;
+        cursor: pointer;
+        text-align: center;
+    }
 }

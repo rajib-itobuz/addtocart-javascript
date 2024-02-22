@@ -35,7 +35,7 @@ header {
     color: var(--flippy-blue);
   }
 
-  #navbar-cart img:hover {
+  .navbar-cart img:hover {
     filter: invert(60%) sepia(72%) saturate(3355%) hue-rotate(157deg) brightness(89%) contrast(101%);
   }
 }
@@ -56,11 +56,11 @@ section {
   display: flex;
   gap: 20px;
 
-  #navbar-cart {
+  .navbar-cart {
     position: relative;
     cursor: pointer;
 
-    #cart-count {
+    .cart-count {
       position: absolute;
       background-color: red;
       color: white;
@@ -78,7 +78,7 @@ section {
     }
   }
 
-  #navbar-logout:hover {
+  .navbar-logout:hover {
     filter: brightness(0) saturate(100%) invert(29%) sepia(74%) saturate(2814%) hue-rotate(337deg) brightness(94%) contrast(90%);
 
   }
@@ -144,7 +144,7 @@ section {
     width: 90%;
     max-width: 500px;
 
-    #my-form {
+    .myform {
       width: 100%;
       padding: 20px;
       min-height: 500px;

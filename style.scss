@@ -1,6 +1,6 @@
 @import "helper/helper.scss";
 
-#flex-container {
+.flexContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -54,7 +54,7 @@
   }
 }
 
-#greetings {
+.greetings {
   margin-block: 20px;
 
   h2 {
@@ -66,12 +66,12 @@
   }
 }
 
-#carousel {
+.carousel {
   position: relative;
   margin-top: 20px;
   padding: 15px;
 
-  #img-carousel {
+  .img-carousel {
     width: 100%;
     position: relative;
     height: 300px;
@@ -114,7 +114,7 @@
     }
   }
 
-  #slideStatus {
+  .slideStatus {
     position: absolute;
     padding: 5px 10px;
     border-radius: 20px;
@@ -155,11 +155,11 @@ input[type="search"] {
   margin-block: 10px;
   margin-inline: 20px;
 
-  #title {
+  .title {
     margin: 0;
   }
 
-  #sortby {
+  .sortby {
     margin-left: auto;
     font-size: 20px;
     padding-block: 10px;

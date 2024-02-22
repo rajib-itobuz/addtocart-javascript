@@ -13,7 +13,7 @@
 <body>
     <section class="container">
         <div class="form-container">
-            <form id="my-form">
+            <form id="my-form" class="myform">
                 <a class="logo">
                     <img src="/images/logo.png" alt="logo" width="100px" height="100px" />
                     Flippy
@@ -21,11 +21,10 @@
                 <h3>Let's change your password</h3>
                 <h2>Enter new password</h2>
 
-                <!-- email -->
                 <label for="password">Password :</label>
                 <input type="password" name="password" required class="form-control" id="password"
                     placeholder="enter your password" />
-                <span id="password-error">Password must contain atleast
+                <span id="password-error" class="passworderror">Password must contain atleast
                     <span id="uppercase-error">one uppercase character</span>
                     <span id="lowercase-error">one lowercase character</span>
                     <span id="symbol-error">one symbol</span>

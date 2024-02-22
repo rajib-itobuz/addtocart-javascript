@@ -31,6 +31,7 @@ if (!currentUser) {
 
   const renderitems = (searchTag = "", searchCriteria = 0) => {
     flexContainer.innerHTML = "";
+
     itemsData
       .filter((item) => {
         if (searchTag) {
