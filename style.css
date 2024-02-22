@@ -349,6 +349,28 @@ input[type=search] {
   order: 1;
 }
 
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block: 10px;
+  margin-inline: 20px;
+}
+.title-container #title {
+  margin: 0;
+}
+.title-container #sortby {
+  margin-left: auto;
+  font-size: 20px;
+  padding-block: 10px;
+  padding-inline: 10px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+.title-container #sortby:focus {
+  border: none;
+}
+
 @media screen and (min-width: 768px) {
   input[type=search] {
     display: block;

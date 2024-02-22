@@ -12,6 +12,7 @@ const leftBtn = document.getElementById("leftButton");
 const sliderItems = document.querySelectorAll(".slider");
 const rightBtn = document.getElementById("rightButton");
 const searchButton = document.getElementById("search");
+const sortbyBtn = document.getElementById("sortby");
 
 const currentUser = localStorage.getItem("currentUser");
 if (!currentUser) {
@@ -28,7 +29,7 @@ if (!currentUser) {
     });
   };
 
-  const renderitems = (searchTag = "") => {
+  const renderitems = (searchTag = "", searchCriteria = 0) => {
     flexContainer.innerHTML = "";
     itemsData
       .filter((item) => {
@@ -36,6 +37,11 @@ if (!currentUser) {
           return item.name.toLowerCase().includes(searchTag);
         }
         return true;
+      })
+      .sort((a, b) => {
+        if (searchCriteria === 1) return a.price - b.price;
+        else if (searchCriteria === 2) return b.price - a.price;
+        else return;
       })
       .forEach((item, ind) => {
         createItem(item, ind, flexContainer);
@@ -84,6 +90,10 @@ if (!currentUser) {
 
   searchButton.addEventListener("input", () => {
     renderitems(searchButton.value);
+  });
+
+  sortbyBtn.addEventListener("change", (e) => {
+    renderitems("", parseInt(e.target.value));
   });
 
   logoutBtn.addEventListener("click", logout);
