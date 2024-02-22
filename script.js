@@ -65,7 +65,7 @@ if (!currentUser) {
     renderSlide();
     renderitems();
 
-    setInterval(() => rightBtn.click(), 3000);
+    setInterval(() => rightBtn.click(), 4000);
   })();
 
   rightBtn.addEventListener("click", () => {

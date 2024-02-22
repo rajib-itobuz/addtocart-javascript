@@ -141,12 +141,10 @@ section {
     overflow: hidden;
     background: rgba($color: #fff, $alpha: 1);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-
     width: 90%;
     max-width: 500px;
-    height: fit-content;
 
-    #myForm {
+    #my-form {
       width: 100%;
       padding: 20px;
       min-height: 500px;

@@ -133,10 +133,8 @@ section h1 {
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   width: 90%;
   max-width: 500px;
-  height: -moz-fit-content;
-  height: fit-content;
 }
-.container .form-container #myForm {
+.container .form-container #my-form {
   width: 100%;
   padding: 20px;
   min-height: 500px;
@@ -146,29 +144,29 @@ section h1 {
   justify-content: center;
   max-width: 500px;
 }
-.container .form-container #myForm .logo {
+.container .form-container #my-form .logo {
   display: flex;
   align-items: center;
   font-size: 30px;
   transform: translate(-5%, 0%);
   font-weight: bold;
 }
-.container .form-container #myForm .logo img {
+.container .form-container #my-form .logo img {
   -o-object-fit: cover;
      object-fit: cover;
 }
-.container .form-container #myForm h2 {
+.container .form-container #my-form h2 {
   text-align: center;
   width: 100%;
   max-width: 300px;
   font-size: 16px;
   margin-block: 10px 20px;
 }
-.container .form-container #myForm h2:nth-child(1) {
+.container .form-container #my-form h2:nth-child(1) {
   color: #f47547;
   font-size: 30px;
 }
-.container .form-container #myForm h3 {
+.container .form-container #my-form h3 {
   text-align: center;
   width: 100%;
   max-width: 300px;
@@ -177,13 +175,13 @@ section h1 {
   color: gray;
   font-weight: 300;
 }
-.container .form-container #myForm label {
+.container .form-container #my-form label {
   text-align: start;
   width: 100%;
   max-width: 300px;
   margin-bottom: 10px;
 }
-.container .form-container #myForm input {
+.container .form-container #my-form input {
   display: block;
   width: 100%;
   max-width: 300px;
@@ -191,7 +189,7 @@ section h1 {
   border: 1px solid gray;
   padding: 10px 15px;
 }
-.container .form-container #myForm button {
+.container .form-container #my-form button {
   width: 70%;
   max-width: 200px;
   border-radius: 8px;
@@ -234,7 +232,7 @@ section {
   display: none;
 }
 
-#forgotPass {
+#forgot-pass {
   margin-top: 10px;
   cursor: pointer;
   text-align: center;
