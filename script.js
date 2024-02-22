@@ -8,9 +8,9 @@ import {
 const flexContainer = document.getElementById("flex-container");
 const logoutBtn = document.getElementById("navbar-logout");
 const carouselSlides = document.querySelectorAll("#img-carousel img");
-const leftBtn = document.getElementById("leftButton");
+const leftBtn = document.getElementById("left-button");
 const sliderItems = document.querySelectorAll(".slider");
-const rightBtn = document.getElementById("rightButton");
+const rightBtn = document.getElementById("right-button");
 const searchButton = document.getElementById("search");
 const sortbyBtn = document.getElementById("sortby");
 
@@ -50,7 +50,7 @@ if (!currentUser) {
 
   (() => {
     const list = localStorage.getItem("userList");
-    const userList = list != "" && list != null ? JSON.parse(list) : [];
+    const userList = list !== "" && list !== null ? JSON.parse(list) : [];
 
     const greetings = document.getElementById("greetings");
     const user = userList.find(

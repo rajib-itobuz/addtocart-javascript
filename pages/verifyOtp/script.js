@@ -1,5 +1,5 @@
 import { sendEmail } from "../../helper/emailHelper.js";
-const myForm = document.getElementById("myForm");
+const myForm = document.getElementById("my-form");
 const otpField = document.getElementById("otp");
 const otpError = document.getElementById("otp-error");
 const timer = document.getElementById("timer");
@@ -36,11 +36,11 @@ if (!tempUser || !otp) {
       const tempUser = localStorage.getItem("tempUser");
       const list = localStorage.getItem("userList");
 
-      const userList = list != "" && list != null ? JSON.parse(list) : [];
+      const userList = list !== "" && list !== null ? JSON.parse(list) : [];
       let user =
         tempUser !== null || tempUser !== "" ? JSON.parse(tempUser) : {};
 
-      if (user != {}) {
+      if (Object.keys(user).length > 0) {
         userList.push(user);
         localStorage.setItem("cartData", JSON.stringify(user.cart));
         localStorage.setItem("userList", JSON.stringify(userList));
@@ -60,7 +60,7 @@ if (!tempUser || !otp) {
       const fetchUserData = localStorage.getItem("tempUser");
 
       const user =
-        fetchUserData != null && fetchUserData != ""
+        fetchUserData !== null && fetchUserData !== ""
           ? JSON.parse(fetchUserData)
           : null;
       if (user) {

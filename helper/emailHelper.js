@@ -18,6 +18,6 @@ export const sendEmail = (
       (response) => {
         successCb();
       },
-      (error) => {}
+      (error) => { }
     );
 };

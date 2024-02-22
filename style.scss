@@ -167,13 +167,13 @@ input[type="search"] {
     border: 1px solid gray;
 
     &:focus {
-      border: none;
+      border: 1px solid gray;
     }
   }
 }
 
 
-
+// 768px
 @media screen and (min-width:768px) {
   input[type="search"] {
     display: block;

@@ -4,9 +4,9 @@ const cartData = localStorage.getItem("cartData");
 
 // parse local storage and save into variables
 export const itemsData =
-  dbData != "" && dbData != null ? JSON.parse(dbData) : [];
+  dbData !== "" && dbData !== null ? JSON.parse(dbData) : [];
 export const cart =
-  cartData != "" && cartData != null ? JSON.parse(cartData) : [];
+  cartData !== "" && cartData !== null ? JSON.parse(cartData) : [];
 
 // update cart count
 const cartCount = document.getElementById("cart-count");
@@ -37,9 +37,8 @@ export const updatePriceSection = (cart, discount, charges) => {
   invValue.innerHTML = `<span>Cart Value :</span> <span>${cartAmount.toFixed(
     2
   )}</span>`;
-  discvalue.innerHTML = `<span>Discount Applied ${
-    discount * 100
-  }% :</span> <span>${discountValue.toFixed(2)}</span>`;
+  discvalue.innerHTML = `<span>Discount Applied ${discount * 100
+    }% :</span> <span>${discountValue.toFixed(2)}</span>`;
   shipCharge.innerHTML = `<span>Shipping Charges :</span> <span>${charges}</span>`;
   totalAmt.innerHTML = `<span>Total invoice Value :</span> <span>${(
     cartAmount -
@@ -75,7 +74,7 @@ const saveUpdate = () => {
   const curruser = localStorage.getItem("currentUser");
   if (curruser) {
     const list = localStorage.getItem("userList");
-    const userList = list != "" && list != null ? JSON.parse(list) : [];
+    const userList = list !== "" && list !== null ? JSON.parse(list) : [];
     const index = userList.findIndex(
       (item) => item.uid === JSON.parse(curruser)
     );
@@ -123,7 +122,7 @@ const deletefromCart = (item) => {
 
 // find in cart if required
 const findinCart = (item) =>
-  cart != [] ? cart.find((cartItem) => cartItem.name === item.name) : null;
+  cart.length > 0 ? cart.find((cartItem) => cartItem.name === item.name) : null;
 
 // create and export items
 export const createItem = (item, ind, flexContainer) => {
@@ -194,7 +193,7 @@ export const createItem = (item, ind, flexContainer) => {
 
   itemCard.append(productImage, contentDiv);
 
-  if (findinCart(item) == null) {
+  if (findinCart(item) === null) {
     cartCountDiv.style.display = "none";
     button.style.display = "block";
   } else {

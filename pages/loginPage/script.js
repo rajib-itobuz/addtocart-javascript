@@ -2,15 +2,14 @@ import { sendEmail } from "../../helper/emailHelper.js";
 
 const emailinput = document.getElementById("email");
 const passwordinput = document.getElementById("password");
-const submitBtn = document.getElementById("login-submit");
 const emailError = document.getElementById("email-error");
 const passwordError = document.getElementById("password-error");
 const upperCaseError = document.getElementById("uppercase-error");
 const lowerCaseError = document.getElementById("lowercase-error");
 const symbolError = document.getElementById("symbol-error");
 const numberError = document.getElementById("number-error");
-const inpForm = document.getElementById("myForm");
-const forgotPassword = document.getElementById("forgotPass");
+const inpForm = document.getElementById("my-form");
+const forgotPassword = document.getElementById("forgot-pass");
 const incorrectError = document.getElementById("incorrect-error");
 
 const currentUser = localStorage.getItem("currentUser");
@@ -19,7 +18,7 @@ if (currentUser) {
   window.location.replace("/");
 } else {
   const list = localStorage.getItem("userList");
-  const userList = list != "" && list != null ? JSON.parse(list) : [];
+  const userList = list !== "" && list !== null ? JSON.parse(list) : [];
 
   const validateEmail = (email) => {
     if (
@@ -130,14 +129,14 @@ if (currentUser) {
     const email = emailinput.value;
     const password = passwordinput.value;
     let formValidationStatus = 0;
-    if (email.trim() != "" && validateEmail(email)) {
+    if (email.trim() !== "" && validateEmail(email)) {
       formValidationStatus++;
     }
-    if (password.trim() != "" && validatePassword(password)) {
+    if (password.trim() !== "" && validatePassword(password)) {
       formValidationStatus++;
     }
 
-    if (formValidationStatus == 2) {
+    if (formValidationStatus === 2) {
       const user = userList.find((item) => item.email === email);
 
       if (user) {

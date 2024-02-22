@@ -1,11 +1,10 @@
-const myForm = document.getElementById("myForm");
 const passwordinput = document.getElementById("password");
 const passwordError = document.getElementById("password-error");
 const upperCaseError = document.getElementById("uppercase-error");
 const lowerCaseError = document.getElementById("lowercase-error");
 const symbolError = document.getElementById("symbol-error");
 const numberError = document.getElementById("number-error");
-const inputForm = document.getElementById("myForm");
+const inputForm = document.getElementById("my-form");
 const errormsg = document.getElementById("incorrect-error");
 
 const passwordInputCriteria = (e) => {
@@ -53,13 +52,13 @@ const passwordInputCriteria = (e) => {
 
 const forgotPass = localStorage.getItem("forgotPass");
 const forgotPassObj =
-  forgotPass != "" && forgotPass != null ? JSON.parse(forgotPass) : undefined;
+  forgotPass !== "" && forgotPass !== null ? JSON.parse(forgotPass) : undefined;
 
 if (!forgotPassObj) {
   window.location.replace("/");
 } else {
   const list = localStorage.getItem("userList");
-  const userList = list != "" && list != null ? JSON.parse(list) : [];
+  const userList = list !== "" && list !== null ? JSON.parse(list) : [];
   passwordinput.addEventListener("input", passwordInputCriteria);
   passwordinput.addEventListener(
     "focusout",
