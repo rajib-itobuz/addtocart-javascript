@@ -10,16 +10,16 @@
 </head>
 
 <body>
-  <header>
-    <a>
+  <header class="flex wrap align-center justify-between text-primary">
+    <a class="flex pointer align-center text-primary">
       <img src="images/logo.png" alt="logo" width="50px" height="50px" />
       FlipKart
     </a>
     <input type="search" placeholder="Search items here" id="search" />
-    <div class="navbar-actions">
-      <a href="./pages/cartPage/cart.html" id="navbar-cart" class="navbar-cart">
+    <div class="navbarActions flex">
+      <a href="./pages/cartPage/cart.html" id="navbar-cart" class="navbarCart relative pointer">
         <img src="images/cart.svg" alt="cart-icon" width="30px" height="30px" />
-        <span id="cart-count" class="cartCount">0</span>
+        <span id="cart-count" class="cartCount absolute flex justify-center align-center circle">0</span>
       </a>
       <a id="navbar-logout" class="navbar-logout">
         <img src="images/logout.svg" alt="logout" width="30px" height="30px" />
@@ -27,38 +27,33 @@
     </div>
   </header>
 
-  <section id="carousel" class="carousel">
-    <div id="img-carousel" class="img-carousel">
-      <img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/5fc9e7a7f342b6a6.jpg?q=20" alt="carousel-1" />
-      <img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/c0440a58f0081d32.jpeg?q=20" alt="carousel-2" />
-      <img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/5a2311ff9e965a96.jpeg?q=20" alt="carousel-3" />
-      <img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/352e6f0f8034fab5.jpg?q=20" alt="carousel-4" />
-      <img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/aa1b2bdcf519b468.jpg?q=20" alt="carousel-5" />
+  <section id="carousel" class="carouselSlider relative">
+    <div id="img-carousel" class="img-carousel relative overflow-hidden">
     </div>
 
-    <img id="left-button" class="carousel-button" src="./images/chevron-left.svg" />
-    <div id="slideStatus">
+    <img id="left-button" class="carousel-button pointer absolute" src="./images/chevron-left.svg" />
+    <div class="slideStatus absolute">
       <span class="slider slider-1"></span>
       <span class="slider slider-2"></span>
       <span class="slider slider-3"></span>
       <span class="slider slider-4"></span>
       <span class="slider slider-5"></span>
     </div>
-    <img id="right-button" class="carousel-button" src="./images/chevron-right.svg" />
+    <img id="right-button" class="carousel-button pointer absolute" src="./images/chevron-right.svg" />
   </section>
 
-  <section id="greetings"></section>
+  <section id="greetings" class="greetings"></section>
 
   <section>
-    <div class="title-container">
-      <h1 id="title">Best Selling items</h1>
-      <select name="sort-by" id="sortby">
+    <div class="title-container flex justify-between align-center">
+      <h1 id="title" class="title">Best Selling items</h1>
+      <select name="sort-by" id="sortby" class="sort-input">
         <option selected value="0">Featured</option>
         <option value="1">Low to High</option>
         <option value="2">High to Low</option>
       </select>
     </div>
-    <div id="flex-container"></div>
+    <div id="flex-container" class="flexContainer flex justify-center wrap"></div>
   </section>
 
   <script src="dbData/dbData.js"></script>

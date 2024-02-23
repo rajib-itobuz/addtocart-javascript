@@ -7,12 +7,29 @@ import {
 
 const flexContainer = document.getElementById("flex-container");
 const logoutBtn = document.getElementById("navbar-logout");
-const carouselSlides = document.querySelectorAll("#img-carousel img");
 const leftBtn = document.getElementById("left-button");
 const sliderItems = document.querySelectorAll(".slider");
 const rightBtn = document.getElementById("right-button");
 const searchButton = document.getElementById("search");
 const sortbyBtn = document.getElementById("sortby");
+
+const carouselContainer = document.getElementById("img-carousel");
+const carouselImages = localStorage.getItem("carouselImageData");
+
+(() => {
+  if (carouselImages) {
+    const imageArr = JSON.parse(carouselImages);
+    imageArr.forEach((element) => {
+      const imageDiv = document.createElement("img");
+      imageDiv.src = element;
+      imageDiv.setAttribute("class", "absolute");
+
+      carouselContainer.append(imageDiv);
+    });
+  }
+})();
+
+const carouselSlides = document.querySelectorAll("#img-carousel img");
 
 const currentUser = localStorage.getItem("currentUser");
 if (!currentUser) {
@@ -90,11 +107,12 @@ if (!currentUser) {
   callEventListener(flexContainer, false);
 
   searchButton.addEventListener("input", () => {
+    sortbyBtn.value = 0;
     renderitems(searchButton.value, 0);
   });
 
   sortbyBtn.addEventListener("change", (e) => {
-    renderitems("", parseInt(e.target.value));
+    renderitems(searchButton.value, parseInt(e.target.value));
   });
 
   logoutBtn.addEventListener("click", logout);

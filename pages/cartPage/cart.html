@@ -10,23 +10,23 @@
 </head>
 
 <body>
-    <header>
-        <a href="/">
+    <header class="flex wrap align-center justify-between text-primary">
+        <a class="flex pointer align-center text-primary" href="/">
             <img src="../../images/logo.png" alt="logo" width="50px" height="50px" />
             FlipKart
         </a>
-        <div id="navbar-cart">
-            <img src="../../images/cart.svg" alt="cart-icon" width="30px" height="30px" />
-            <span id="cart-count">0</span>
+        <div href="./pages/cartPage/cart.html" id="navbar-cart" class="navbarCart relative pointer">
+            <img src="/images/cart.svg" alt="cart-icon" width="30px" height="30px" />
+            <span id="cart-count" class="cartCount absolute flex justify-center align-center circle">0</span>
         </div>
     </header>
 
     <section>
         <h1>Your Cart has these items</h1>
-        <div id="flex-container"></div>
+        <div id="flex-container" class="flexContainer flex flex-column"></div>
     </section>
 
-    <section id="total-price"></section>
+    <section id="total-price" class="totalPrice"></section>
 
     <script src="cart.js" type="module"></script>
 </body>

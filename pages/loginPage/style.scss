@@ -4,7 +4,7 @@ section {
     max-width: unset;
 }
 
-.form-container {
+.container .form-container {
     padding-block: 10px;
 
     .emailerrror {
@@ -17,7 +17,6 @@ section {
 
     .forgotpass {
         margin-top: 10px;
-        cursor: pointer;
         text-align: center;
     }
 }

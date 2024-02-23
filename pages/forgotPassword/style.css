@@ -13,29 +13,82 @@
   text-align: center;
 }
 
+.flex {
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.bg-primary {
+  background-color: var(--flippy-blue);
+}
+
+.text-primary {
+  color: var(--flippy-blue);
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
 header {
   letter-spacing: 2px;
-  display: flex;
-  flex-wrap: wrap;
   margin-top: 10px;
   padding-inline: 20px;
   margin-inline: auto;
   width: 100%;
   max-width: 960px;
-  color: var(--flippy-blue);
-  align-items: center;
-  justify-content: space-between;
 }
 header a {
   font-size: 18px;
-  display: flex;
-  cursor: pointer;
-  align-items: center;
   text-decoration: none;
-  color: var(--flippy-blue);
 }
-header .navbar-cart img:hover {
+header .navbarCart img:hover {
   filter: invert(60%) sepia(72%) saturate(3355%) hue-rotate(157deg) brightness(89%) contrast(101%);
+}
+header .navbarActions {
+  gap: 20px;
+}
+header .navbarActions .navbar-logout:hover {
+  filter: brightness(0) saturate(100%) invert(29%) sepia(74%) saturate(2814%) hue-rotate(337deg) brightness(94%) contrast(90%);
 }
 
 section {
@@ -49,40 +102,23 @@ section h1 {
   margin-left: 20px;
 }
 
-.navbar-actions {
-  display: flex;
-  gap: 20px;
-}
-.navbar-actions .navbar-cart {
-  position: relative;
-  cursor: pointer;
-}
-.navbar-actions .navbar-cart .cart-count {
-  position: absolute;
+.cartCount {
   background-color: red;
   color: white;
   font-weight: bold;
   top: -15px;
   right: -15px;
-  display: inline-block;
   font-size: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 25px;
   height: 25px;
-  border-radius: 50%;
-}
-.navbar-actions .navbar-logout:hover {
-  filter: brightness(0) saturate(100%) invert(29%) sepia(74%) saturate(2814%) hue-rotate(337deg) brightness(94%) contrast(90%);
 }
 
-.cart-count {
+.countItems {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
 }
-.cart-count div {
+.countItems div {
   width: 20%;
   min-width: -moz-fit-content;
   min-width: fit-content;
@@ -93,8 +129,8 @@ section h1 {
   text-align: center;
   font-weight: bold;
 }
-.cart-count .btnAdd,
-.cart-count .btnSub {
+.countItems .btnAdd,
+.countItems .btnSub {
   cursor: pointer;
   color: gray;
   padding: 14px;
@@ -103,13 +139,8 @@ section h1 {
 }
 
 .container {
-  display: flex;
-  position: relative;
   height: 100vh;
   width: 100%;
-  justify-content: center;
-  flex-direction: row;
-  align-items: center;
   background: url(/images/signup.jpg) no-repeat center, white;
   background-size: cover;
 }
@@ -124,29 +155,32 @@ section h1 {
   background: #000;
 }
 .container .form-container {
-  justify-content: center;
   z-index: 999;
-  display: flex;
   border-radius: 20px;
-  overflow: hidden;
   background: white;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   width: 90%;
   max-width: 500px;
 }
+.container .form-container span {
+  display: inline-block;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 300px;
+  text-align: end;
+  margin-top: 2px;
+  color: #f47547;
+}
+.container .form-container span span {
+  margin-bottom: 0px;
+}
 .container .form-container .myform {
   width: 100%;
   padding: 20px;
   min-height: 500px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   max-width: 500px;
 }
 .container .form-container .myform .logo {
-  display: flex;
-  align-items: center;
   font-size: 30px;
   transform: translate(-5%, 0%);
   font-weight: bold;
@@ -156,8 +190,6 @@ section h1 {
      object-fit: cover;
 }
 .container .form-container .myform h2 {
-  text-align: center;
-  width: 100%;
   max-width: 300px;
   font-size: 16px;
   margin-block: 10px 20px;
@@ -167,8 +199,6 @@ section h1 {
   font-size: 30px;
 }
 .container .form-container .myform h3 {
-  text-align: center;
-  width: 100%;
   max-width: 300px;
   margin-block: 10px;
   font-size: 16px;
@@ -199,30 +229,13 @@ section h1 {
   padding-block: 10px;
 }
 
-.form-container span {
-  display: inline-block;
-  margin-bottom: 10px;
-  width: 100%;
-  max-width: 300px;
-  text-align: end;
-  margin-top: 2px;
-  color: #f47547;
-}
-.form-container span span {
-  margin-bottom: 0px;
-}
-
-.pointer {
-  cursor: pointer;
-}
-
 section {
   max-width: unset;
 }
 
-.form-container {
+.container .form-container {
   padding-block: 10px;
 }
-.form-container .passworderror {
+.container .form-container .passworderror {
   display: none;
 }/*# sourceMappingURL=style.css.map */

@@ -11,19 +11,18 @@
 </head>
 
 <body>
-    <section class="container">
-        <div class="form-container">
-            <form id="my-form" class="myform">
-                <a class="logo">
+    <section class="container flex relative justify-center flex-row align-center">
+        <div class="form-container justify-center flex ">
+            <form id="my-form" class="myform flex flex-column align-center justify-center">
+                <a class="logo flex align-center">
                     <img src="/images/logo.png" alt="logo" width="100px" height="100px" />
                     Flippy
                 </a>
-                <h3>Let's change your password</h3>
-                <h2>Enter new password</h2>
+                <h3 class="text-center">Let's change your password</h3>
+                <h2 class="text-center">Enter new password</h2>
 
                 <label for="password">Password :</label>
-                <input type="password" name="password" required class="form-control" id="password"
-                    placeholder="enter your password" />
+                <input type="password" name="password" required id="password" placeholder="enter your password" />
                 <span id="password-error" class="passworderror">Password must contain atleast
                     <span id="uppercase-error">one uppercase character</span>
                     <span id="lowercase-error">one lowercase character</span>

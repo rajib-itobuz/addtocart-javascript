@@ -129,6 +129,7 @@ export const createItem = (item, ind, flexContainer) => {
   const itemCard = document.createElement("div");
   itemCard.classList.add("item");
   itemCard.setAttribute("id", `itemCard-${ind}`);
+  itemCard.setAttribute("class", `itemDiv flex flex-column justify-between`);
 
   // add item fields
   const productImage = document.createElement("img");
@@ -155,7 +156,7 @@ export const createItem = (item, ind, flexContainer) => {
 
   // card count div
   const cartCountDiv = document.createElement("div");
-  cartCountDiv.classList.add("cart-count");
+  cartCountDiv.classList.add("countItems");
   cartCountDiv.setAttribute("id", `cart-count-${ind}`);
 
   const btnAdd = document.createElement("div");
