@@ -182,6 +182,7 @@ const itemData = [
   },
 ];
 const imageCarouselData = [
+  "https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/f6459b86b7458f57.jpg?q=20",
   "https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/5fc9e7a7f342b6a6.jpg?q=20",
   "https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/c0440a58f0081d32.jpeg?q=20",
   "https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/5a2311ff9e965a96.jpeg?q=20",
