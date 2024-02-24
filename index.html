@@ -17,7 +17,7 @@
     </a>
     <input type="search" placeholder="Search items here" id="search" />
     <div class="navbarActions flex">
-      <a href="./pages/cartPage/cart.html" id="navbar-cart" class="navbarCart relative pointer">
+      <a href="./pages/cartPage/" id="navbar-cart" class="navbarCart relative pointer">
         <img src="images/cart.svg" alt="cart-icon" width="30px" height="30px" />
         <span id="cart-count" class="cartCount absolute flex justify-center align-center circle">0</span>
       </a>
@@ -32,12 +32,7 @@
     </div>
 
     <img id="left-button" class="carousel-button pointer absolute" src="./images/chevron-left.svg" />
-    <div class="slideStatus absolute">
-      <span class="slider slider-1"></span>
-      <span class="slider slider-2"></span>
-      <span class="slider slider-3"></span>
-      <span class="slider slider-4"></span>
-      <span class="slider slider-5"></span>
+    <div class="slideStatus absolute" id="sliderStats">
     </div>
     <img id="right-button" class="carousel-button pointer absolute" src="./images/chevron-right.svg" />
   </section>
@@ -51,6 +46,7 @@
         <option selected value="0">Featured</option>
         <option value="1">Low to High</option>
         <option value="2">High to Low</option>
+        <option value="3">Ratings</option>
       </select>
     </div>
     <div id="flex-container" class="flexContainer flex justify-center wrap"></div>

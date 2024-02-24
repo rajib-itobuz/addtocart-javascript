@@ -1,4 +1,5 @@
 // read localstorage data
+export const flexContainer = document.getElementById("flex-container");
 const dbData = localStorage.getItem("dbData");
 const cartData = localStorage.getItem("cartData");
 
@@ -8,9 +9,11 @@ export const itemsData =
 export const cart =
   cartData !== "" && cartData !== null ? JSON.parse(cartData) : [];
 
+
 // update cart count
 const cartCount = document.getElementById("cart-count");
 cartCount.innerText = cart.length;
+
 
 //cart section
 const totalPriceSection = document.getElementById("total-price");
@@ -23,7 +26,7 @@ const totalAmt = document.createElement("h3");
 const checkOutBtn = document.createElement("button");
 
 // hide invoice section if cart has no items
-export const hideInvoiceSection = () => {
+const hideInvoiceSection = () => {
   if (cart.length === 0) {
     totalPriceSection.innerHTML = "No Cart Items Added";
     totalPriceSection.style.textAlign = "center";
@@ -31,7 +34,7 @@ export const hideInvoiceSection = () => {
 };
 
 // update price section in cart page on item update
-export const updatePriceSection = (cart, discount, charges) => {
+const updatePriceSection = (cart, discount, charges) => {
   const cartAmount = cart.reduce((a, curr) => a + curr.count * curr.price, 0);
   const discountValue = cartAmount * discount;
   invValue.innerHTML = `<span>Cart Value :</span> <span>${cartAmount.toFixed(
@@ -48,24 +51,33 @@ export const updatePriceSection = (cart, discount, charges) => {
 };
 
 //show total priceSection only in cart Page
-if (totalPriceSection) {
-  invValue.innerHTML = "<span>Cart Value :</span> <span>0</span>";
-  discvalue.innerHTML = "<span>Discount Applied :</span> <span>0</span>";
-  shipCharge.innerHTML = "<span>Shipping Charges :</span> <span>0</span>";
-  totalAmt.innerHTML = "<span>Total invoice Value :</span> <span>0</span>";
-  checkOutBtn.innerText = "Checkout";
+(() => {
+  if (totalPriceSection) {
+    invValue.innerHTML = "<span>Cart Value :</span> <span>0</span>";
+    discvalue.innerHTML = "<span>Discount Applied :</span> <span>0</span>";
+    shipCharge.innerHTML = "<span>Shipping Charges :</span> <span>0</span>";
+    totalAmt.innerHTML = "<span>Total invoice Value :</span> <span>0</span>";
+    checkOutBtn.innerText = "Checkout";
 
-  totalPriceSection.append(
-    invValue,
-    discvalue,
-    shipCharge,
-    totalAmt,
-    checkOutBtn
-  );
+    totalPriceSection.append(
+      invValue,
+      discvalue,
+      shipCharge,
+      totalAmt,
+      checkOutBtn
+    );
 
-  hideInvoiceSection();
-  updatePriceSection(cart, discount, shipping);
-}
+    updatePriceSection(cart, discount, shipping);
+    hideInvoiceSection();
+  }
+})();
+
+
+
+
+// find in cart if required
+const findinCart = (item) =>
+  cart.length > 0 ? cart.find((cartItem) => cartItem.name === item.name) : null;
 
 // save update to localstorage and update cart count
 const saveUpdate = () => {
@@ -76,7 +88,7 @@ const saveUpdate = () => {
     const list = localStorage.getItem("userList");
     const userList = list !== "" && list !== null ? JSON.parse(list) : [];
     const index = userList.findIndex(
-      (item) => item.uid === JSON.parse(curruser)
+      (user) => user.uid === curruser
     );
     userList[index].cart = cart;
 
@@ -86,7 +98,8 @@ const saveUpdate = () => {
 
 // add to cart functionality
 const addtoCart = (item, cartCountDiv, button) => {
-  var index = cart.findIndex((cartItem) => cartItem.name === item.name);
+  const index = cart.findIndex((cartItem) => cartItem.uid === item.uid);
+  console.log(cart, index, item);
   if (index >= 0) {
     cart[index].count += 1;
   } else {
@@ -100,9 +113,12 @@ const addtoCart = (item, cartCountDiv, button) => {
   }
 };
 
+
 // remove from cart functionality
 const removefromCart = (item, cartCountDiv, button) => {
-  var index = cart.findIndex((cartItem) => cartItem.name === item.name);
+  const index = cart.findIndex((cartItem) => cartItem.name === item.name);
+
+  console.log(index);
   if (index >= 0 && cart[index].count > 1) {
     cart[index].count -= 1;
   } else {
@@ -112,6 +128,7 @@ const removefromCart = (item, cartCountDiv, button) => {
   }
 };
 
+
 // delete from cart if clicked on remove
 const deletefromCart = (item) => {
   cart.splice(
@@ -120,9 +137,6 @@ const deletefromCart = (item) => {
   );
 };
 
-// find in cart if required
-const findinCart = (item) =>
-  cart.length > 0 ? cart.find((cartItem) => cartItem.name === item.name) : null;
 
 // create and export items
 export const createItem = (item, ind, flexContainer) => {
@@ -140,19 +154,26 @@ export const createItem = (item, ind, flexContainer) => {
   contentDiv.classList.add("content");
 
   const title = document.createElement("h5");
-  title.innerText =
-    item.name.length > 50 ? item.name.slice(0, 50) + "..." : item.name;
+  title.innerText =item.name;
+    // item.name.length > 50 ? item.name.slice(0, 50) + "..." : item.name;
 
   const price = document.createElement("h2");
-  price.innerText = item.count ? item.count * item.price : item.price;
+  price.setAttribute("class","flex align-center")
   price.setAttribute("id", `price-${ind}`);
+
+  const ratings=document.createElement("span");
+  ratings.innerHTML=`${item.rating.rate}⭐ ( ${item.rating.count} )`
+
+  price.append(item.count ? item.count * item.price : item.price,ratings)
 
   // button
   const button = document.createElement("button");
   button.innerText = "Add to Cart";
-  button.classList.add("btn-cart");
   button.setAttribute("id", `btn-cart-${ind}`);
+  button.setAttribute("class", `btn-cart pointer`);
+  button.onclick = () => callEvent(event, item.count ? true : false);
   button.dataset.id = ind;
+  button.dataset.uid = item.uid;
 
   // card count div
   const cartCountDiv = document.createElement("div");
@@ -160,9 +181,11 @@ export const createItem = (item, ind, flexContainer) => {
   cartCountDiv.setAttribute("id", `cart-count-${ind}`);
 
   const btnAdd = document.createElement("div");
-  btnAdd.classList.add("btnAdd");
+  btnAdd.setAttribute("class", `btnAdd pointer`);
   btnAdd.setAttribute("id", `btnAdd-${ind}`);
+  btnAdd.onclick = () => callEvent(event, item.count ? true : false);
   btnAdd.dataset.id = ind;
+  btnAdd.dataset.uid = item.uid;
   btnAdd.innerText = "+";
 
   const count = document.createElement("div");
@@ -175,15 +198,19 @@ export const createItem = (item, ind, flexContainer) => {
 
   const btnSub = document.createElement("div");
   btnSub.innerText = "-";
-  btnSub.classList.add("btnSub");
+  btnSub.setAttribute("class", `btnSub pointer`);
+  btnSub.onclick = () => callEvent(event, item.count ? true : false);
   btnSub.setAttribute("id", `btnSub-${ind}`);
   btnSub.dataset.id = ind;
+  btnSub.dataset.uid = item.uid;
 
   const crossButton = document.createElement("a");
-  crossButton.classList.add("cross-btn");
+  crossButton.setAttribute("class", `cross-btn pointer`);
   crossButton.setAttribute("id", `crossbtn-${ind}`);
   crossButton.innerText = "Remove";
+  crossButton.onclick = () => callEvent(event, item.count ? true : false);
   crossButton.dataset.id = ind;
+  crossButton.dataset.uid = item.uid;
 
   cartCountDiv.append(btnSub, count, btnAdd, crossButton);
   const quantity = document.createElement("h3");
@@ -204,6 +231,7 @@ export const createItem = (item, ind, flexContainer) => {
   flexContainer.appendChild(itemCard);
 };
 
+
 // mapping of function so that its easier to bind actions to common function
 const mapmyFunction = {
   add: addtoCart,
@@ -211,15 +239,20 @@ const mapmyFunction = {
   delete: deletefromCart,
 };
 
+
 // single add event listener call function
 const onEventCallback = (callbackName, item, ...argv) => {
   mapmyFunction[callbackName](item, argv[1], argv[0]);
   const cartItemIndex = cart.findIndex(
     (cartItem) => cartItem.name === item.name
   );
+
+  // console.log(cartItemIndex,item);
   const countItem = cartItemIndex >= 0 ? cart[cartItemIndex].count : 0;
   argv[2].innerText = countItem;
 
+
+  // entirely works on cart
   if (item.count) {
     argv[3].innerText = item.price * item.count;
     updatePriceSection(cart, discount, shipping);
@@ -231,58 +264,61 @@ const onEventCallback = (callbackName, item, ...argv) => {
   saveUpdate();
 };
 
-// call and attach addeevent listener
-export const callEventListener = (flexContainer, flag) =>
-  flexContainer.addEventListener("click", (e) => {
-    const index = e.target.dataset?.id;
+// setting onclick event
+const callEvent = (event, flag) => {
+  const selectedElementIndex = event.target.dataset?.id;
+  const itemUid = parseInt(event.target.dataset?.uid);
 
-    const cardCountDiv = document.getElementById(`cart-count-${index}`);
-    const count = document.getElementById(`count-${index}`);
-    const button = document.getElementById(`btn-cart-${index}`);
-    const price = document.getElementById(`price-${index}`);
-    const itemCard = document.getElementById(`itemCard-${index}`);
 
-    if (e.target.id === `btn-cart-${index}`) {
-      onEventCallback(
-        "add",
-        flag ? cart[index] : itemsData[index],
-        button,
-        cardCountDiv,
-        count
-      );
-    } else if (e.target.id === `btnAdd-${index}`) {
-      onEventCallback(
-        "add",
-        flag ? cart[index] : itemsData[index],
-        button,
-        cardCountDiv,
-        count,
-        price
-      );
-    } else if (e.target.id === `btnSub-${index}`) {
-      onEventCallback(
-        "remove",
-        flag ? cart[index] : itemsData[index],
-        button,
-        cardCountDiv,
-        count,
-        price,
-        flexContainer,
-        itemCard
-      );
-    } else if (e.target.id === `crossbtn-${index}`) {
-      onEventCallback(
-        "delete",
-        flag ? cart[index] : itemsData[index],
-        button,
-        cardCountDiv,
-        count,
-        price,
-        flexContainer,
-        itemCard
-      );
-    }
-  });
+  const cardCountDiv = document.getElementById(`cart-count-${selectedElementIndex}`);
+  const count = document.getElementById(`count-${selectedElementIndex}`);
+  const button = document.getElementById(`btn-cart-${selectedElementIndex}`);
+  const price = document.getElementById(`price-${selectedElementIndex}`);
+  const itemCard = document.getElementById(`itemCard-${selectedElementIndex}`);
+
+  const item = flag ? cart.find(e => e.uid === itemUid) : itemsData.find(e => e.uid === itemUid);
+
+  if (event.target.id === `btn-cart-${selectedElementIndex}`)
+    onEventCallback(
+      "add",
+      item,
+      button,
+      cardCountDiv,
+      count
+    );
+  else if (event.target.id === `btnAdd-${selectedElementIndex}`)
+    onEventCallback(
+      "add",
+      item,
+      button,
+      cardCountDiv,
+      count,
+      price
+    );
+  else if (event.target.id === `btnSub-${selectedElementIndex}`)
+    onEventCallback(
+      "remove",
+      item,
+      button,
+      cardCountDiv,
+      count,
+      price,
+      flexContainer,
+      itemCard
+    );
+  else if (event.target.id === `crossbtn-${selectedElementIndex}`)
+    onEventCallback(
+      "delete",
+      item,
+      button,
+      cardCountDiv,
+      count,
+      price,
+      flexContainer,
+      itemCard
+    );
+}
+
 
 export const logout = () => {
   localStorage.removeItem("currentUser");

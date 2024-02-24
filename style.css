@@ -80,6 +80,7 @@ header {
 }
 header a {
   font-size: 18px;
+  font-weight: 600;
   text-decoration: none;
 }
 header .navbarCart img:hover {
@@ -253,6 +254,11 @@ section h1 {
 }
 .flexContainer .itemDiv h5 {
   font-weight: 500;
+  font-size: 16px;
+  height: 38px;
+  line-height: 19px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .flexContainer .itemDiv h2 {
   font-weight: 700;
@@ -260,6 +266,11 @@ section h1 {
 }
 .flexContainer .itemDiv h2::before {
   content: "₹";
+}
+.flexContainer .itemDiv h2 span {
+  font-weight: 500;
+  font-size: 15px;
+  margin-left: auto;
 }
 .flexContainer .itemDiv .btn-cart {
   width: 100%;
@@ -277,7 +288,7 @@ section h1 {
 }
 .greetings h2 {
   font-size: 30px;
-  font-weight: 400;
+  font-weight: 500;
   margin-left: 20px;
   text-transform: capitalize;
   color: var(--flippy-blue);
@@ -335,9 +346,8 @@ section h1 {
   display: inline-block;
   border-radius: 5px;
   background: #edede9;
-}
-.carouselSlider .active {
-  background: var(--flippy-blue);
+  margin-inline: 2px;
+  transition: width 0.3s ease-in-out;
 }
 
 input[type=search] {
@@ -345,6 +355,7 @@ input[type=search] {
   border-radius: 0.5rem;
   width: 100%;
   border: 1px solid gray;
+  background-color: white;
   padding: 10px;
   order: 1;
 }
@@ -362,10 +373,7 @@ input[type=search] {
   padding-block: 10px;
   padding-inline: 10px;
   border-radius: 5px;
-  border: 1px solid gray;
-}
-.title-container .sort-input:focus {
-  border: 1px solid gray;
+  background-color: transparent;
 }
 
 @media screen and (min-width: 768px) {

@@ -21,8 +21,9 @@
       width: 100%;
 
       h5 {
-        font-size: 18px;
-        font-weight: 500;
+        font-weight: 600;
+        font-size: 16px;
+        height: 35px;
       }
 
       h2 {
@@ -33,6 +34,10 @@
 
         &::before {
           content: "₹";
+        }
+
+        span{
+          display: none;
         }
       }
 

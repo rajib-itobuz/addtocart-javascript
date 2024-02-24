@@ -80,6 +80,7 @@ header {
 }
 header a {
   font-size: 18px;
+  font-weight: 600;
   text-decoration: none;
 }
 header .navbarCart img:hover {
@@ -251,8 +252,9 @@ section h1 {
   width: 100%;
 }
 .flexContainer .itemDiv .content h5 {
-  font-size: 18px;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 16px;
+  height: 35px;
 }
 .flexContainer .itemDiv .content h2 {
   color: var(--flippy-blue);
@@ -262,6 +264,9 @@ section h1 {
 }
 .flexContainer .itemDiv .content h2::before {
   content: "₹";
+}
+.flexContainer .itemDiv .content h2 span {
+  display: none;
 }
 .flexContainer .itemDiv .content h3 {
   margin-block: 20px 10px;

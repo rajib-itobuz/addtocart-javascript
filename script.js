@@ -1,20 +1,20 @@
 import {
+  flexContainer,
   itemsData,
   createItem,
-  callEventListener,
   logout,
 } from "./helper/helper.js";
 
-const flexContainer = document.getElementById("flex-container");
 const logoutBtn = document.getElementById("navbar-logout");
 const leftBtn = document.getElementById("left-button");
-const sliderItems = document.querySelectorAll(".slider");
 const rightBtn = document.getElementById("right-button");
 const searchButton = document.getElementById("search");
 const sortbyBtn = document.getElementById("sortby");
 
 const carouselContainer = document.getElementById("img-carousel");
+const sliderStats = document.getElementById("sliderStats");
 const carouselImages = localStorage.getItem("carouselImageData");
+
 
 (() => {
   if (carouselImages) {
@@ -25,11 +25,18 @@ const carouselImages = localStorage.getItem("carouselImageData");
       imageDiv.setAttribute("class", "absolute");
 
       carouselContainer.append(imageDiv);
+
+      const sliderItem=document.createElement("span");
+      sliderItem.setAttribute("class","slider");
+
+      sliderStats.append(sliderItem);
     });
   }
 })();
 
 const carouselSlides = document.querySelectorAll("#img-carousel img");
+const sliderItems = document.querySelectorAll(".slider");
+
 
 const currentUser = localStorage.getItem("currentUser");
 if (!currentUser) {
@@ -59,6 +66,7 @@ if (!currentUser) {
       .sort((a, b) => {
         if (searchCriteria === 1) return a.price - b.price;
         else if (searchCriteria === 2) return b.price - a.price;
+        else if (searchCriteria === 3) return b.rating.rate-a.rating.rate
         else return true;
       })
       .forEach((item, ind) => {
@@ -104,7 +112,7 @@ if (!currentUser) {
     renderSlide(currSlide);
   });
 
-  callEventListener(flexContainer, false);
+  
 
   searchButton.addEventListener("input", () => {
     sortbyBtn.value = 0;
