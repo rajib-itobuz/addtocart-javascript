@@ -23,7 +23,10 @@
       h5 {
         font-weight: 600;
         font-size: 16px;
-        height: 35px;
+        height: 38px;
+        line-height: 19px;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       h2 {
@@ -36,7 +39,7 @@
           content: "₹";
         }
 
-        span{
+        span {
           display: none;
         }
       }
