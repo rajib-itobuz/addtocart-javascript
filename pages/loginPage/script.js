@@ -1,4 +1,4 @@
-import { sendEmail } from "../../helper/emailHelper.js";
+import { sendEmailJs } from "../../helper/emailJsHelper.js";
 
 const emailinput = document.getElementById("email");
 const passwordinput = document.getElementById("password");
@@ -148,8 +148,7 @@ if (currentUser) {
           incorrectError.innerText = "Email/Password is incorrect";
         }
       } else {
-        sendEmail(
-          "register_flippy_otp",
+        sendEmailJs(
           email,
           "Your Otp for Flippy Ecommerce Website",
           `Hi your Otp is ${otp}`,
@@ -176,11 +175,10 @@ if (currentUser) {
       incorrectError.innerText = "Please Enter your email";
     } else if (userIndex >= 0) {
       incorrectError.innerHTML = "&nbsp;";
-      sendEmail(
-        "forgot_password",
+      sendEmailJs(
         email,
         "Reset your password",
-        "Your link is valid for only 5mins.\n Click on link below to proceed",
+        "Your link is valid for only 5mins.<br/> Click on link below to proceed",
         `${window.location.origin}/pages/forgotPassword/`,
         () => saveForgotPasswordInstance(email)
       );

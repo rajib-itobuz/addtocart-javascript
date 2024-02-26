@@ -1,4 +1,4 @@
-import { sendEmail } from "../../helper/emailHelper.js";
+import { sendEmailJs } from "../../helper/emailJsHelper.js";
 const myForm = document.getElementById("my-form");
 const otpField = document.getElementById("otp");
 const otpError = document.getElementById("otp-error");
@@ -65,8 +65,7 @@ if (!tempUser || !otp) {
           : null;
       if (user) {
         const otp = Math.floor(Math.random() * 999999) + 100000;
-        sendEmail(
-          "register_flippy_otp",
+        sendEmailJs(
           user.email,
           "Your Otp for Flippy Ecommerce Website",
           `Hi your Otp is ${otp}`,
