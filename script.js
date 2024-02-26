@@ -20,9 +20,10 @@ const carouselImages = localStorage.getItem("carouselImageData");
 (() => {
   if (carouselImages) {
     const imageArr = JSON.parse(carouselImages);
-    imageArr.forEach((element) => {
+    imageArr.forEach((element, index) => {
       const imageDiv = document.createElement("img");
       imageDiv.src = element;
+      imageDiv.alt = `slider-${index}`;
       imageDiv.setAttribute("class", "absolute");
 
       carouselContainer.append(imageDiv);

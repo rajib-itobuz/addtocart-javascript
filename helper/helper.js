@@ -135,6 +135,7 @@ export const createItem = (item, ind, flexContainer) => {
   // add item fields
   const productImage = document.createElement("img");
   productImage.src = item.imgUrl;
+  productImage.alt = `product-${item.uid}`;
   productImage.setAttribute("alt", "productImage");
 
   const contentDiv = document.createElement("div");
