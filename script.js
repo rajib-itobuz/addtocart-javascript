@@ -5,6 +5,7 @@ import {
   logout,
 } from "./helper/helper.js";
 
+
 const logoutBtn = document.getElementById("navbar-logout");
 const leftBtn = document.getElementById("left-button");
 const rightBtn = document.getElementById("right-button");
@@ -26,8 +27,8 @@ const carouselImages = localStorage.getItem("carouselImageData");
 
       carouselContainer.append(imageDiv);
 
-      const sliderItem=document.createElement("span");
-      sliderItem.setAttribute("class","slider");
+      const sliderItem = document.createElement("span");
+      sliderItem.setAttribute("class", "slider");
 
       sliderStats.append(sliderItem);
     });
@@ -66,7 +67,7 @@ if (!currentUser) {
       .sort((a, b) => {
         if (searchCriteria === 1) return a.price - b.price;
         else if (searchCriteria === 2) return b.price - a.price;
-        else if (searchCriteria === 3) return b.rating.rate-a.rating.rate
+        else if (searchCriteria === 3) return b.rating.rate - a.rating.rate
         else return true;
       })
       .forEach((item, ind) => {
@@ -112,7 +113,7 @@ if (!currentUser) {
     renderSlide(currSlide);
   });
 
-  
+
 
   searchButton.addEventListener("input", () => {
     sortbyBtn.value = 0;

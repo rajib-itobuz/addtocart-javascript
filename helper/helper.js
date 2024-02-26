@@ -9,11 +9,9 @@ export const itemsData =
 export const cart =
   cartData !== "" && cartData !== null ? JSON.parse(cartData) : [];
 
-
 // update cart count
 const cartCount = document.getElementById("cart-count");
 cartCount.innerText = cart.length;
-
 
 //cart section
 const totalPriceSection = document.getElementById("total-price");
@@ -72,9 +70,6 @@ const updatePriceSection = (cart, discount, charges) => {
   }
 })();
 
-
-
-
 // find in cart if required
 const findinCart = (item) =>
   cart.length > 0 ? cart.find((cartItem) => cartItem.name === item.name) : null;
@@ -87,9 +82,7 @@ const saveUpdate = () => {
   if (curruser) {
     const list = localStorage.getItem("userList");
     const userList = list !== "" && list !== null ? JSON.parse(list) : [];
-    const index = userList.findIndex(
-      (user) => user.uid === curruser
-    );
+    const index = userList.findIndex((user) => user.uid === curruser);
     userList[index].cart = cart;
 
     localStorage.setItem("userList", JSON.stringify(userList));
@@ -99,7 +92,6 @@ const saveUpdate = () => {
 // add to cart functionality
 const addtoCart = (item, cartCountDiv, button) => {
   const index = cart.findIndex((cartItem) => cartItem.uid === item.uid);
-  console.log(cart, index, item);
   if (index >= 0) {
     cart[index].count += 1;
   } else {
@@ -113,12 +105,9 @@ const addtoCart = (item, cartCountDiv, button) => {
   }
 };
 
-
 // remove from cart functionality
 const removefromCart = (item, cartCountDiv, button) => {
   const index = cart.findIndex((cartItem) => cartItem.name === item.name);
-
-  console.log(index);
   if (index >= 0 && cart[index].count > 1) {
     cart[index].count -= 1;
   } else {
@@ -128,7 +117,6 @@ const removefromCart = (item, cartCountDiv, button) => {
   }
 };
 
-
 // delete from cart if clicked on remove
 const deletefromCart = (item) => {
   cart.splice(
@@ -136,7 +124,6 @@ const deletefromCart = (item) => {
     1
   );
 };
-
 
 // create and export items
 export const createItem = (item, ind, flexContainer) => {
@@ -154,17 +141,16 @@ export const createItem = (item, ind, flexContainer) => {
   contentDiv.classList.add("content");
 
   const title = document.createElement("h5");
-  title.innerText =item.name;
-    // item.name.length > 50 ? item.name.slice(0, 50) + "..." : item.name;
+  title.innerText = item.name;
 
   const price = document.createElement("h2");
-  price.setAttribute("class","flex align-center")
+  price.setAttribute("class", "flex align-center");
   price.setAttribute("id", `price-${ind}`);
 
-  const ratings=document.createElement("span");
-  ratings.innerHTML=`${item.rating.rate}⭐ ( ${item.rating.count} )`
+  const ratings = document.createElement("span");
+  ratings.innerHTML = `${item.rating.rate}⭐ ( ${item.rating.count} )`;
 
-  price.append(item.count ? item.count * item.price : item.price,ratings)
+  price.append(item.count ? item.count * item.price : item.price, ratings);
 
   // button
   const button = document.createElement("button");
@@ -231,7 +217,6 @@ export const createItem = (item, ind, flexContainer) => {
   flexContainer.appendChild(itemCard);
 };
 
-
 // mapping of function so that its easier to bind actions to common function
 const mapmyFunction = {
   add: addtoCart,
@@ -239,18 +224,14 @@ const mapmyFunction = {
   delete: deletefromCart,
 };
 
-
 // single add event listener call function
 const onEventCallback = (callbackName, item, ...argv) => {
   mapmyFunction[callbackName](item, argv[1], argv[0]);
   const cartItemIndex = cart.findIndex(
     (cartItem) => cartItem.name === item.name
   );
-
-  // console.log(cartItemIndex,item);
   const countItem = cartItemIndex >= 0 ? cart[cartItemIndex].count : 0;
   argv[2].innerText = countItem;
-
 
   // entirely works on cart
   if (item.count) {
@@ -269,32 +250,22 @@ const callEvent = (event, flag) => {
   const selectedElementIndex = event.target.dataset?.id;
   const itemUid = parseInt(event.target.dataset?.uid);
 
-
-  const cardCountDiv = document.getElementById(`cart-count-${selectedElementIndex}`);
+  const cardCountDiv = document.getElementById(
+    `cart-count-${selectedElementIndex}`
+  );
   const count = document.getElementById(`count-${selectedElementIndex}`);
   const button = document.getElementById(`btn-cart-${selectedElementIndex}`);
   const price = document.getElementById(`price-${selectedElementIndex}`);
   const itemCard = document.getElementById(`itemCard-${selectedElementIndex}`);
 
-  const item = flag ? cart.find(e => e.uid === itemUid) : itemsData.find(e => e.uid === itemUid);
+  const item = flag
+    ? cart.find((e) => e.uid === itemUid)
+    : itemsData.find((e) => e.uid === itemUid);
 
   if (event.target.id === `btn-cart-${selectedElementIndex}`)
-    onEventCallback(
-      "add",
-      item,
-      button,
-      cardCountDiv,
-      count
-    );
+    onEventCallback("add", item, button, cardCountDiv, count);
   else if (event.target.id === `btnAdd-${selectedElementIndex}`)
-    onEventCallback(
-      "add",
-      item,
-      button,
-      cardCountDiv,
-      count,
-      price
-    );
+    onEventCallback("add", item, button, cardCountDiv, count, price);
   else if (event.target.id === `btnSub-${selectedElementIndex}`)
     onEventCallback(
       "remove",
@@ -317,8 +288,7 @@ const callEvent = (event, flag) => {
       flexContainer,
       itemCard
     );
-}
-
+};
 
 export const logout = () => {
   localStorage.removeItem("currentUser");

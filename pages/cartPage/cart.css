@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 :root {
   --flippy-blue: #047bd5;
 }
@@ -78,17 +79,21 @@ header {
   width: 100%;
   max-width: 960px;
 }
+
 header a {
   font-size: 18px;
   font-weight: 600;
   text-decoration: none;
 }
+
 header .navbarCart img:hover {
   filter: invert(60%) sepia(72%) saturate(3355%) hue-rotate(157deg) brightness(89%) contrast(101%);
 }
+
 header .navbarActions {
   gap: 20px;
 }
+
 header .navbarActions .navbar-logout:hover {
   filter: brightness(0) saturate(100%) invert(29%) sepia(74%) saturate(2814%) hue-rotate(337deg) brightness(94%) contrast(90%);
 }
@@ -98,6 +103,7 @@ section {
   width: 100%;
   max-width: 960px;
 }
+
 section h1 {
   font-weight: 400;
   margin-bottom: 20px;
@@ -120,6 +126,7 @@ section h1 {
   flex-wrap: nowrap;
   align-items: center;
 }
+
 .countItems div {
   width: 20%;
   min-width: -moz-fit-content;
@@ -131,6 +138,7 @@ section h1 {
   text-align: center;
   font-weight: bold;
 }
+
 .countItems .btnAdd,
 .countItems .btnSub {
   cursor: pointer;
@@ -146,6 +154,7 @@ section h1 {
   background: url(/images/signup.jpg) no-repeat center, white;
   background-size: cover;
 }
+
 .container::before {
   content: "";
   position: absolute;
@@ -156,6 +165,7 @@ section h1 {
   left: 0;
   background: #000;
 }
+
 .container .form-container {
   z-index: 999;
   border-radius: 20px;
@@ -164,6 +174,7 @@ section h1 {
   width: 90%;
   max-width: 500px;
 }
+
 .container .form-container span {
   display: inline-block;
   margin-bottom: 10px;
@@ -173,33 +184,40 @@ section h1 {
   margin-top: 2px;
   color: #f47547;
 }
+
 .container .form-container span span {
   margin-bottom: 0px;
 }
+
 .container .form-container .myform {
   width: 100%;
   padding: 20px;
   min-height: 500px;
   max-width: 500px;
 }
+
 .container .form-container .myform .logo {
   font-size: 30px;
   transform: translate(-5%, 0%);
   font-weight: bold;
 }
+
 .container .form-container .myform .logo img {
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
+
 .container .form-container .myform h2 {
   max-width: 300px;
   font-size: 16px;
   margin-block: 10px 20px;
 }
+
 .container .form-container .myform h2:nth-child(1) {
   color: #f47547;
   font-size: 30px;
 }
+
 .container .form-container .myform h3 {
   max-width: 300px;
   margin-block: 10px;
@@ -207,12 +225,14 @@ section h1 {
   color: gray;
   font-weight: 300;
 }
+
 .container .form-container .myform label {
   text-align: start;
   width: 100%;
   max-width: 300px;
   margin-bottom: 10px;
 }
+
 .container .form-container .myform input {
   display: block;
   width: 100%;
@@ -221,6 +241,7 @@ section h1 {
   border: 1px solid gray;
   padding: 10px 15px;
 }
+
 .container .form-container .myform button {
   width: 70%;
   max-width: 200px;
@@ -236,44 +257,54 @@ section h1 {
   max-width: 90%;
   gap: 20px;
 }
+
 .flexContainer .itemDiv {
   padding: 20px;
   gap: 10px;
   border: 1px solid gray;
   border-radius: 10px;
 }
+
 .flexContainer .itemDiv img {
   width: 100%;
   height: 200px;
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
+
 .flexContainer .itemDiv .content {
   width: 100%;
 }
+
 .flexContainer .itemDiv .content h5 {
   font-weight: 600;
   font-size: 16px;
   height: 35px;
 }
+
 .flexContainer .itemDiv .content h2 {
   color: var(--flippy-blue);
   margin-block: 20px;
   letter-spacing: 1px;
   font-size: 22px;
 }
+
 .flexContainer .itemDiv .content h2::before {
   content: "₹";
 }
+
 .flexContainer .itemDiv .content h2 span {
   display: none;
 }
+
 .flexContainer .itemDiv .content h3 {
   margin-block: 20px 10px;
 }
+
 .flexContainer .itemDiv .content h3 .countItems {
   margin-top: 10px;
 }
+
 .flexContainer .itemDiv .content h3 .countItems .cross-btn {
   background: white;
   cursor: pointer;
@@ -281,9 +312,11 @@ section h1 {
   color: gray;
   margin-left: auto;
 }
+
 .flexContainer .itemDiv .content h3 .countItems .cross-btn:hover {
   color: red;
 }
+
 .flexContainer .itemDiv .content h3::before {
   content: "Quantity : ";
 }
@@ -292,18 +325,23 @@ section h1 {
   margin-block: 40px 20px;
   padding-inline: 20px;
 }
+
 .totalPrice h3 {
   padding-block: 20px;
 }
+
 .totalPrice h3:first-child {
   border-top: 1px dashed gray;
 }
+
 .totalPrice h3:nth-child(4) {
   border-top: 1px dashed gray;
 }
+
 .totalPrice h3:nth-child(4) span:nth-child(2):before {
   content: "₹ ";
 }
+
 .totalPrice button {
   background: var(--flippy-blue);
   padding: 10px;
@@ -312,14 +350,17 @@ section h1 {
   border-radius: 4px;
   color: white;
 }
+
 .totalPrice span {
   font-weight: 400;
   display: inline-block;
 }
+
 .totalPrice span:nth-child(1) {
   font-size: 14px;
   width: 60%;
 }
+
 .totalPrice span:nth-child(2) {
   font-size: 20px;
 }
@@ -329,10 +370,14 @@ section h1 {
     flex-direction: row;
     align-items: center;
   }
+
   .flexContainer .itemDiv img {
     max-width: 200px;
   }
+
   .flexContainer .itemDiv .content {
     margin-left: 10px;
   }
-}/*# sourceMappingURL=cart.css.map */
+}
+
+/*# sourceMappingURL=cart.css.map */

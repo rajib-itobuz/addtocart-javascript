@@ -77,8 +77,6 @@ if (!tempUser || !otp) {
             timerFunction();
           }
         );
-
-        //
       }
     }
   });

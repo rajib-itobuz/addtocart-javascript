@@ -77,16 +77,20 @@ header {
   width: 100%;
   max-width: 960px;
 }
+
 header a {
   font-size: 18px;
   text-decoration: none;
 }
+
 header .navbarCart img:hover {
   filter: invert(60%) sepia(72%) saturate(3355%) hue-rotate(157deg) brightness(89%) contrast(101%);
 }
+
 header .navbarActions {
   gap: 20px;
 }
+
 header .navbarActions .navbar-logout:hover {
   filter: brightness(0) saturate(100%) invert(29%) sepia(74%) saturate(2814%) hue-rotate(337deg) brightness(94%) contrast(90%);
 }
@@ -96,6 +100,7 @@ section {
   width: 100%;
   max-width: 960px;
 }
+
 section h1 {
   font-weight: 400;
   margin-bottom: 20px;
@@ -118,6 +123,7 @@ section h1 {
   flex-wrap: nowrap;
   align-items: center;
 }
+
 .countItems div {
   width: 20%;
   min-width: -moz-fit-content;
@@ -129,6 +135,7 @@ section h1 {
   text-align: center;
   font-weight: bold;
 }
+
 .countItems .btnAdd,
 .countItems .btnSub {
   cursor: pointer;
@@ -144,6 +151,7 @@ section h1 {
   background: url(/images/signup.jpg) no-repeat center, white;
   background-size: cover;
 }
+
 .container::before {
   content: "";
   position: absolute;
@@ -154,6 +162,7 @@ section h1 {
   left: 0;
   background: #000;
 }
+
 .container .form-container {
   z-index: 999;
   border-radius: 20px;
@@ -162,6 +171,7 @@ section h1 {
   width: 90%;
   max-width: 500px;
 }
+
 .container .form-container span {
   display: inline-block;
   margin-bottom: 10px;
@@ -171,33 +181,40 @@ section h1 {
   margin-top: 2px;
   color: #f47547;
 }
+
 .container .form-container span span {
   margin-bottom: 0px;
 }
+
 .container .form-container .myform {
   width: 100%;
   padding: 20px;
   min-height: 500px;
   max-width: 500px;
 }
+
 .container .form-container .myform .logo {
   font-size: 30px;
   transform: translate(-5%, 0%);
   font-weight: bold;
 }
+
 .container .form-container .myform .logo img {
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
+
 .container .form-container .myform h2 {
   max-width: 300px;
   font-size: 16px;
   margin-block: 10px 20px;
 }
+
 .container .form-container .myform h2:nth-child(1) {
   color: #f47547;
   font-size: 30px;
 }
+
 .container .form-container .myform h3 {
   max-width: 300px;
   margin-block: 10px;
@@ -205,12 +222,14 @@ section h1 {
   color: gray;
   font-weight: 300;
 }
+
 .container .form-container .myform label {
   text-align: start;
   width: 100%;
   max-width: 300px;
   margin-bottom: 10px;
 }
+
 .container .form-container .myform input {
   display: block;
   width: 100%;
@@ -219,6 +238,7 @@ section h1 {
   border: 1px solid gray;
   padding: 10px 15px;
 }
+
 .container .form-container .myform button {
   width: 70%;
   max-width: 200px;
@@ -237,8 +257,11 @@ section {
   margin-top: 10px;
   font-size: 12px;
 }
+
 .form-container h6:hover {
   text-decoration: underline;
   color: var(--flippy-blue);
   text-underline-offset: 5px;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */
