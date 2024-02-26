@@ -93,14 +93,14 @@ if (currentUser) {
   let otp = 0;
 
   const saveUser = (email, password) => {
-    const dt = new Date();
+    const newDate = new Date();
     localStorage.setItem(
       "tempUser",
       JSON.stringify({
-        uid: dt.getTime().toString(),
+        uid: newDate.getTime().toString(),
         email: email,
         password: password,
-        timestamp: dt.toDateString(),
+        timestamp: newDate.toDateString(),
         cart: [],
       })
     );
@@ -110,14 +110,14 @@ if (currentUser) {
   };
 
   const saveForgotPasswordInstance = (email) => {
-    const dt = new Date();
-    const validUpto = new Date().setMinutes(dt.getMinutes() + 5);
+    const newDate = new Date();
+    const validUpto = new Date().setMinutes(newDate.getMinutes() + 5);
     localStorage.setItem(
       "forgotPass",
       JSON.stringify({
         email: email,
         validUpto,
-        timestamp: dt.toDateString(),
+        timestamp: newDate.toDateString(),
       })
     );
     incorrectError.innerText = "Email Sent";
@@ -169,7 +169,7 @@ if (currentUser) {
   forgotPassword.addEventListener("click", (event) => {
     otp = Math.floor(Math.random() * 999999) + 100000;
     const email = emailinput.value;
-    const userIndex = userList.findIndex((u) => u.email === email);
+    const userIndex = userList.findIndex((user) => user.email === email);
 
     if (!email) {
       incorrectError.innerText = "Please Enter your email";

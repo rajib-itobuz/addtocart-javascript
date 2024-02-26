@@ -11,9 +11,10 @@ const leftBtn = document.getElementById("left-button");
 const rightBtn = document.getElementById("right-button");
 const searchButton = document.getElementById("search");
 const sortbyBtn = document.getElementById("sortby");
-
 const carouselContainer = document.getElementById("img-carousel");
-const sliderStats = document.getElementById("sliderStats");
+const sliderStats = document.getElementById("slider-stats");
+
+
 const carouselImages = localStorage.getItem("carouselImageData");
 
 
